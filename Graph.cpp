@@ -108,26 +108,41 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-
-    
+    if(!searchNode(id)){
+        cout << "O no de origem nao existe no grafo.\n";
+        return;
+    }else if(!searchNode(target_id)){
+        cout << "O no destino nao existe no grafo.\n";
+        return;
+    }
+    else{
+        nosGrafo[id]->insertEdge(target_id,weight);
+        cout << "Aresta inserida com sucesso!\n";
+    }
 }
 
 void Graph::removeNode(int id){ 
-    
+    if(!searchNode(id)){
+        cout << "O no nao existe no grafo!\n";
+    }
+    delete (nosGrafo[id]);
+    nosGrafo.erase(nosGrafo.begin() + id - 1);
 }
 
 bool Graph::searchNode(int id)
 {
-    for (auto i = nosGrafo.begin(); i != nosGrafo.end(); ++i)
-        if (*i == id)
+    for (int i = 0; i < nosGrafo.size(); i++)
+        if (nosGrafo[i]->getId() == id)
             return true;
     return false;
 }
 
 Node *Graph::getNode(int id)
 {
-
-    
+    if(!searchNode(id)){
+        cout << "O no nao existe no grafo!\n";
+    }
+    return nosGrafo[id];
 }
 
 
