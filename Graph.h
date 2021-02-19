@@ -8,6 +8,7 @@
 #include <fstream>
 #include <stack>
 #include <list>
+#include <vector>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class Graph{
         bool weighted_node;
         Node* first_node;
         Node* last_node;
+        vector<Node*> nosGrafo;
 
     public:
         //Constructor
@@ -46,7 +48,7 @@ class Graph{
         //methods phase1
         void topologicalSorting();
         void breadthFirstSearch(ofstream& output_file);
-        Graoh* getVertexInduced(int* listIdNodes);
+        Graph* getVertexInduced(int* listIdNodes);
         Graph* agmKuskal();
         Graph* agmPrim();
         float floydMarshall(int idSource, int idTarget);

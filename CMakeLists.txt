@@ -3,4 +3,4 @@ project(trabalhoGrafos2020_3)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(trabalhoGrafos2020_3 main.cpp)
+add_executable(trabalhoGrafos2020_3 Edge.cpp Edge.h Node.cpp Node.h Graph.cpp Graph.h main.cpp)

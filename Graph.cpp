@@ -97,7 +97,13 @@ Node *Graph::getLastNode()
 */
 void Graph::insertNode(int id)
 {
-    
+    if(searchNode(id)){
+        cout << "O no jah existe no grafo.\n";
+        return;
+    }
+    Node *no = new Node(id);
+    nosGrafo.push_back(no);
+    cout << "No inserido com sucesso.\n";
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
@@ -112,7 +118,10 @@ void Graph::removeNode(int id){
 
 bool Graph::searchNode(int id)
 {
-    
+    for (auto i = nosGrafo.begin(); i != nosGrafo.end(); ++i)
+        if (*i == id)
+            return true;
+    return false;
 }
 
 Node *Graph::getNode(int id)
