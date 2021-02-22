@@ -15,7 +15,7 @@ using namespace std;
 Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
     //Variáveis para auxiliar na criação dos nós no Grafo
-    int idNodeSource;
+    int idNodeSource; 
     int idNodeTarget;
     int order;
 
@@ -126,24 +126,24 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
     switch (selecao) {
 
-        //Subgrafo induzido por um conjunto de vértices X;
+        //Subgrafo induzido por um conjunto de vértices X (1)
         case 1:{
 
             break;
         }
-            //Caminho mínimo entre dois vértices usando Dijkstra;
+            //Caminho mínimo entre dois vértices usando Dijkstra (2)
         case 2:{
 
             break;
         }
 
-            //Caminho mínimo entre dois vértices usando Floyd;
+            //Caminho mínimo entre dois vértices usando Floyd (3)
         case 3:{
 
             break;
         }
 
-            //AGM - Kruscal;
+            //AGM Prim; (4)
         case 4:{
 
 
@@ -151,20 +151,35 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-            //AGM Prim;
+           //AGM - Kruscal; (5)
         case 5:{
 
             break;
         }
 
-            //Busca em largura;
+            //Busca em largura; (6)
         case 6:{
 
             break;
         }
-            //Ordenação Topologica;
+            //Ordenação Topologica; (7)
         case 7:{
 
+
+            break;
+        }
+            //Algoritmo Guloso (8)
+        case 8: {
+
+            break;
+        }
+            //Algoritmo Guloso Randomizado (9)
+        case 9: {
+
+            break;
+        }
+            //Algoritmo Guloso Randomizado Reativo (10)
+        case 10:{
 
             break;
         }

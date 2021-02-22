@@ -16,14 +16,14 @@ class Graph{
 
     //Atributes
     private:
-        int order;
-        int number_edges;
-        bool directed;
-        bool weighted_edge;
-        bool weighted_node;
-        Node* first_node;
-        Node* last_node;
-        vector<Node*> nosGrafo;
+        int order; //ordem do grafo (numero de vertices)
+        int number_edges; //numero de arestas
+        bool directed; // direcionado? s ou n
+        bool weighted_edge; // peso nas arestas? s ou n
+        bool weighted_node; // peso nos vertices? s ou n
+        Node* first_node; // primeiro vertice (nó)
+        Node* last_node; // ultimo vertice (nó)
+        vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
 
     public:
         //Constructor
@@ -31,35 +31,35 @@ class Graph{
         //Destructor
         ~Graph();
         //Getters
-        int getOrder();
-        int getNumberEdges();
-        bool getDirected();
-        bool getWeightedEdge();
-        bool getWeightedNode();
-        Node* getFirstNode();
-        Node* getLastNode();
+        int getOrder(); // retorna a ordem
+        int getNumberEdges(); // retorna numero de arestas
+        bool getDirected(); // retorna se é direcionado
+        bool getWeightedEdge(); // retorna se tem peso nas arestas
+        bool getWeightedNode(); // retorna se tem peso nos vertices
+        Node* getFirstNode(); // retorna o primeiro vertice
+        Node* getLastNode(); // retorna ultimo vertice
         //Other methods
-        void insertNode(int id);
-        void insertEdge(int id, int target_id, float weight);
-        void removeNode(int id);
-        bool searchNode(int id);
-        Node* getNode(int id);
+        void insertNode(int id); // insere vertice
+        void insertEdge(int id, int target_id, float weight); //insere aresta
+        void removeNode(int id);// remove vertice
+        bool searchNode(int id); //verifica se o vertice existe no grafo
+        Node* getNode(int id); // retorna um ponteiro pro vertice
 
         //methods phase1
-        void topologicalSorting();
-        void breadthFirstSearch(ofstream& output_file);
-        Graph* getVertexInduced(int* listIdNodes);
-        Graph* agmKuskal();
-        Graph* agmPrim();
-        float floydMarshall(int idSource, int idTarget);
-        float dijkstra(int idSource, int idTarget);
+        void topologicalSorting(); // busca topologica
+        void breadthFirstSearch(ofstream& output_file); //nao entendi
+        Graph* getVertexInduced(int* listIdNodes); // nao entendi
+        Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
+        Graph* agmPrim(); // arvore geradora minima de prim
+        float floydMarshall(int idSource, int idTarget); // metodo floyd
+        float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
 
         //methods phase1
-        float greed();
-        float greedRandom();
-        float greedRactiveRandom();
+        float greed(); // algoritmo guloso
+        float greedRandom(); // guloso randomizado
+        float greedRactiveRandom(); // guloso randomizado reativo
     private:
-        //Auxiliar methods
+        //Metodos Auxiliares
 
 };
 
