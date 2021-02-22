@@ -15,63 +15,64 @@ using namespace std;
 Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
     //Variáveis para auxiliar na criação dos nós no Grafo
-    int idNodeSource; 
-    int idNodeTarget;
-    int order;
+    int idNodeSource; //partida da aresta
+    int idNodeTarget; //vertice alvo para arestas
+    int order; //ordem
 
     //Pegando a ordem do grafo
     input_file >> order;
 
     //Criando objeto grafo
-    Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
+    Graph* graph = new Graph(order, directed, weightedEdge, weightedNode); /* criando novo grafo passando como parametro (ordem, direcionado,
+    peso nas arestas,e peso nos vertices )*/
 
     //Leitura de arquivo
 
-    if(!graph->getWeightedEdge() && !graph->getWeightedNode()){
+    if(!graph->getWeightedEdge() && !graph->getWeightedNode()){ //se o grafo nao tiver peso nas arestas nem nos vertices
 
-        while(input_file >> idNodeSource >> idNodeTarget) {
+        while(input_file >> idNodeSource >> idNodeTarget) {//enquanto (nao sei oq)
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 0);
-
-        }
-
-    }else if(graph->getWeightedEdge() && !graph->getWeightedNode() ){
-
-        float edgeWeight;
-
-        while(input_file >> idNodeSource >> idNodeTarget >> edgeWeight) {
-
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);//insira uma nova aresta do vertice inicial para o vertice alvo
 
         }
 
-    }else if(graph->getWeightedNode() && !graph->getWeightedEdge()){
+    }else if(graph->getWeightedEdge() && !graph->getWeightedNode() ){//se  o grafo tiver peso nas arestas mas nao nos nós
 
-        float nodeSourceWeight, nodeTargetWeight;
+        float edgeWeight;//cria uma variavel com o peso das arestas
 
-        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) {
+        while(input_file >> idNodeSource >> idNodeTarget >> edgeWeight) { //enquanto nao sei o q
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 0);
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);//insira uma nova aresta no grafo, passsando o vertice de partida, vertice alvo, e o peso da aresta.
 
         }
 
-    }else if(graph->getWeightedNode() && graph->getWeightedEdge()){
+    }else if(graph->getWeightedNode() && !graph->getWeightedEdge()){ // se o grafo tiver peso nos vertices mas nao nas arestas
 
-        float nodeSourceWeight, nodeTargetWeight, edgeWeight;
+        float nodeSourceWeight, nodeTargetWeight;//declara o peso dos 2 vertices
 
-        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) {
+        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) { // deve ser o metodo de escrita, ainda nao sei
 
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);// insere nova aresta com peso 0 na aresta
+            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);//retorna o no de partida e insere o peso
+            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o no alvo e insere o peso
+
+        }
+
+    }else if(graph->getWeightedNode() && graph->getWeightedEdge()){// se o grafo tiver peso nos vertices e nas arestas
+
+        float nodeSourceWeight, nodeTargetWeight, edgeWeight;//declara as variaveis dos pesos
+
+        while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) { //ainda nao entendi
+
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);// insere nova aresta com no de partida, no alvo e peso como parametros
+            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);// retorna o vertice de partida e insere o peso
+            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o vertice alvo (da aresta) e insere o peso
 
         }
 
     }
 
-    return graph;
+    return graph;//retorna o grafo
 }
 
 Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
