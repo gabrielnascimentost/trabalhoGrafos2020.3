@@ -4,11 +4,11 @@
 using namespace std;
 
 /**************************************************************************************************
- * Defining the Edge's methods
+ * Defining the Edge's methods definindo metodos das arestas
 **************************************************************************************************/
 
 // Constructor
-Edge::Edge(int target_id){
+Edge::Edge(int target_id){ 
 
     this->target_id = target_id;
     this->next_edge = nullptr;
