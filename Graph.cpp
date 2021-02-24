@@ -172,13 +172,13 @@ void topologicalSorting(){
 void breadthFirstSearch(ofstream& output_file){
 
 }
-Graph* getVertexInduced(int* listIdNodes){
+Graph* Graph::getVertexInduced(int* listIdNodes){
 
 }
 
-Graph* agmKuskal(){
+Graph* Graph::agmKuskal(){
 
 }
-Graph* agmPrim(){
+Graph* Graph::agmPrim(){
 
 }
