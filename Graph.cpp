@@ -236,13 +236,13 @@ bool Graph::ehConexo(){ // verifica se o grafo é conexo
 
 }
 
-vector<Edge> Graph::criaListaArestas()//cria um vetor com as arestas do grafo
+vector<Edge*> Graph::criaListaArestas()//cria um vetor com as arestas do grafo
 {
-    vector<Edge> Arestas;//cria um vetor de arestas
+    vector<Edge*> Arestas;//cria um vetor de arestas
     int indice = 0;//com indice 0 de inicio
     for(auto i=this->first_node->getFirstEdge(); i != this->getLastNode()->getLastEdge(); i->getNextEdge() )//começa do inicio e pega todas as arestas do grafo
     {
-        Arestas[indice] = *i;//armazena as arestas no vetor
+        Arestas[indice] = i;//armazena as arestas no vetor
     }
     return Arestas;//retorna o vetor no final para ser usado
 }

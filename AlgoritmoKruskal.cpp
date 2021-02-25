@@ -12,7 +12,7 @@ using namespace std;
 void AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore geradora minima usando algoritmo de kruskal
     if (grafo->ehConexo()) {//verifica se o grafo eh conexo
         Graph* AGM = new Graph(); //criou um grafo solução
-        list<Edge*> arestas(grafo->getNumberEdges()); // cria uma cópia da lista de arestas do grafo
+        vector<Edge*> arestas = grafo->criaListaArestas(); // cria uma cópia da lista de arestas do grafo
 
         for (int i = 0; i <= AGM->getNumberEdges(); i++)
         {
