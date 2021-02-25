@@ -8,9 +8,10 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Edge::Edge(int target_id){  // construtor da aresta passando como parametro o identificador do vertice alvo
+Edge::Edge(int id,int target_id){  // construtor da aresta passando como parametro o identificador do vertice alvo
 
-    this->target_id = target_id; // defini identificador
+    this->id = id; //defini identificador do vertice de partida
+    this->target_id = target_id; // defini identificador do vertice alvo( de chegada )
     this->next_edge = nullptr; // proxima aresta declara como null
     this->weight = 0; // defini o peso como 0
 

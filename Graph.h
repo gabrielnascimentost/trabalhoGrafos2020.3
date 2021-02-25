@@ -62,7 +62,7 @@ class Graph{
         //Metodos Auxiliares
         bool ehConexo();
         void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
-        vector<Edge*> criaListaArestas();
+        list<Edge*> criaListaArestas();
     private:
 };
 

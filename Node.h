@@ -39,7 +39,7 @@ class Node{ //classe vertice
         void setWeight(float weight);//insere o peso no vertice
         // Other methods
         bool searchEdge(int target_id);//existe esse vertice no grafo? passando o id do vertice alvo
-        void insertEdge(int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
+        void insertEdge(int id, int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
         void removeAllEdges();// remove todas as arestas
         int removeEdge(int id, bool directed, Node* target_node);// remove aresta
         void incrementOutDegree();//incrementa grau de saida

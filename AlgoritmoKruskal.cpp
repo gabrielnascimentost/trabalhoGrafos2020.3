@@ -12,27 +12,21 @@ using namespace std;
 void AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore geradora minima usando algoritmo de kruskal
     if (grafo->ehConexo()) {//verifica se o grafo eh conexo
         Graph* AGM = new Graph(); //criou um grafo solução
-        vector<Edge*> arestas = grafo->criaListaArestas(); // cria uma cópia das arestas do grafo
-
-        for (int i = 0; i <= AGM->getNumberEdges(); i++)
-        {
-           
-        }
-        
-
+        list<Edge*> arestas = grafo->criaListaArestas(); // cria uma cópia das arestas do grafo
+    
         // ordena a lista de arestas por peso em ordem crescente
-        arestas.sort([](Edge *aresta1, Edge *aresta2) { // ordena as arestas
+        arestas.sort([](Edge* aresta1, Edge* aresta2) { // ordena as arestas
             return aresta1->getWeight() < aresta2->getWeight();//returna as arestas ordenadas por peso
         });
 
-        for (auto i = arestas.begin(); AGM->number_edges.size() < grafo->vertices.size() - 1; i++) {//para i= inicio da lista, ate o final da lista < vertices -1 do grafo
-            Aresta* aresta = *i; //aresta vai ser igual a aresta do for
+        for (auto i = arestas.begin(); AGM->getNumberEdges() < grafo->getOrder() - 1; i++) {//para i= inicio da lista, ate o final da lista < vertices -1 do grafo
+            Edge* aresta = *i; //aresta vai ser igual a aresta do "for"
 
-            if (!arvoreGeradoraMinima->possuiVertice(aresta->vertice1->id)) {// se o grafo possui vertice identificado
+            if (!AGM->searchNode(aresta->getTargetId)) {// se o grafo nao possui o vertice identificado
                 arvoreGeradoraMinima->vertices.push_back(new Vertice(aresta->vertice1->id));//copia esse vertice para a agm
             }
 
-            if (!arvoreGeradoraMinima->possuiVertice(aresta->vertice2->id)) {//se possui o segunudo vertice
+            if (!arvoreGeradoraMinima->possuiVertice(aresta->vertice2->id)) {//se nao possui o segunudo vertice
                 arvoreGeradoraMinima->vertices.push_back(new Vertice(aresta->vertice2->id));//copia esse vertice
             }
 
