@@ -22,21 +22,20 @@ void AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore gerad
         for (auto i = arestas.begin(); AGM->getNumberEdges() < grafo->getOrder() - 1; i++) {//para i= inicio da lista, ate o final da lista < vertices -1 do grafo
             Edge* aresta = *i; //aresta vai ser igual a aresta do "for"
 
-            if (!AGM->searchNode(aresta->getTargetId)) {// se o grafo nao possui o vertice identificado
-                arvoreGeradoraMinima->vertices.push_back(new Vertice(aresta->vertice1->id));//copia esse vertice para a agm
+            if (!AGM->searchNode(aresta->getId())) {// se o grafo nao possui o vertice identificado
+                AGM->insertNode(aresta->getId()); //cria esse vertice novo na agm*/
             }
 
-            if (!arvoreGeradoraMinima->possuiVertice(aresta->vertice2->id)) {//se nao possui o segunudo vertice
-                arvoreGeradoraMinima->vertices.push_back(new Vertice(aresta->vertice2->id));//copia esse vertice
+            if (!AGM->searchNode(aresta->getTargetId())) {//se nao possui o segunudo vertice (ou vertice alvo)
+                AGM->insertNode(aresta->getTargetId());//cria esse vertice na agm
             }
 
-            Vertice *vertice1 = arvoreGeradoraMinima->getVertice(aresta->vertice1->id);//vertice 1 vira o overtice da agm
-            Vertice *vertice2 = arvoreGeradoraMinima->getVertice(aresta->vertice2->id);//vertice 2 faz a msm coisa
+            Node* vertice1 = AGM->getNode(aresta->getId());//usa um auxiliar para o vertice 1
+            Node* vertice2 = AGM->getNode(aresta->getTargetId());//usa um auxiliar para o vertice 2 (para ambos serem usados no "eh ciclo?")
 
-            if (!arestaFormaCiclo(vertice1, vertice2)) {//verifica se forma ciclo entre os vertices
-                auto *novaAresta = new Aresta(vertice1, vertice2, aresta->peso);//copia a aresta entre os vertices se nao formar ciclo
-
-                arvoreGeradoraMinima->arestas.push_back(novaAresta);//copia ela
+            if (!ehCiclo(vertice1, vertice2)) 
+            {//verifica se forma ciclo entre os vertices, se nao formar...
+                AGM->insertEdge(vertice1->getId(),vertice2->getId(),aresta->getWeight());//insere a aresta na agm com os vertices originais como ligaçao
             }
         }
 
@@ -44,4 +43,10 @@ void AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore gerad
     } else {
         cout << "O grafo eh desconexo." << endl;
     }
+}
+
+bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
+    
+
+    return false;
 }
