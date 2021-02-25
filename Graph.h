@@ -46,9 +46,9 @@ class Graph{
         Node* getNode(int id); // retorna um ponteiro pro vertice
 
         //methods phase1
-        void topologicalSorting(); // busca topologica
-        void breadthFirstSearch(ofstream& output_file); //nao entendi
-        Graph* getVertexInduced(int* listIdNodes); // nao entendi
+        void topologicalSorting(); // ordenacao topologica de um DAG
+        void breadthFirstSearch(ofstream& output_file); //busca em largura
+        Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
         Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
         Graph* agmPrim(); // arvore geradora minima de prim
         float floydMarshall(int idSource, int idTarget); // metodo floyd
