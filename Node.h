@@ -13,8 +13,8 @@ class Node{ //classe vertice
 
     // Attributes (atributos)
     private:
-        Edge* first_edge; //ponteiro para o primeiro vertice
-        Edge* last_edge; // ponteiro para o ultimo vertice
+        Edge* first_edge; //ponteiro para o primeiro aresta
+        Edge* last_edge; // ponteiro para o ultimo aresta
         int id; // identificador do vertice
         unsigned int in_degree; // int sem sinal (nao sei oq) **deve ser o valor de entrada
         unsigned int out_degree;// int sem sinal (nao sei oq) ** e o valor de saida 
@@ -27,8 +27,8 @@ class Node{ //classe vertice
         // Destructor
         ~Node(); // destrutor
         // Getters (declaraçao dos gets)
-        Edge* getFirstEdge();//retorna o primeiro vertice
-        Edge* getLastEdge();//retorna o ultimo vertice
+        Edge* getFirstEdge();//retorna o primeiro aresta
+        Edge* getLastEdge();//retorna o ultimo aresta
         int getId();//retorna o identificador
         int getInDegree();//retorna o valor de entrada do vertice *talvez seja
         int getOutDegree();//retorna o valor de saida do vertice *talvez seja
@@ -46,7 +46,7 @@ class Node{ //classe vertice
         void decrementOutDegree();//decrementa grau de saida
         void incrementInDegree();//incrementa grau de entrada
         void decrementInDegree();//decrementa grau de entrada
-        Edge* hasEdgeBetween(int target_id);//ainda nao sei o que faz exatamente
+        Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
         // Auxiliar methods (metodos auxiliares)
 
 };

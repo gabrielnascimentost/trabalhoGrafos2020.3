@@ -15,8 +15,8 @@ Node::Node(int id){ // construtor passando o identificador como parametro
     this->in_degree = 0;// coloca grau de entrada como 0
     this->out_degree = 0;// coloca grau de saida como 0
     this->weight = 0;// declara peso 0
-    this->first_edge = nullptr;//declara como o primeiro vertice como null
-    this->last_edge = nullptr;//declara o ultimo vertice como null
+    this->first_edge = nullptr;//declara a primeira aresta como null
+    this->last_edge = nullptr;//declara a ultima aresta como null
     this->next_node = nullptr;//poe o proximo vertice como null
 
 };//fim do construtor

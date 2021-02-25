@@ -8,7 +8,7 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Edge::Edge(int target_id){  // construtor da aresta passando como parametro o identificador da aresta
+Edge::Edge(int target_id){  // construtor da aresta passando como parametro o identificador do vertice alvo
 
     this->target_id = target_id; // defini identificador
     this->next_edge = nullptr; // proxima aresta declara como null
@@ -27,9 +27,9 @@ Edge::~Edge(){ // destrutor
 }
 
 // Getters
-int Edge::getTargetId(){ // get do id da aresta
+int Edge::getTargetId(){ // get do id do vertice alvo da aresta
 
-    return this->target_id;//retorna o id da aresta
+    return this->target_id;//retorna o id do vertice alvo da aresta
 
 }
 
@@ -57,3 +57,4 @@ void Edge::setWeight(float weight){//set do peso da aresta
     this->weight = weight;//define o peso da aresta como o peso passado por parametro
 
 }
+
