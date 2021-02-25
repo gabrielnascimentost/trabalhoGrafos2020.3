@@ -23,6 +23,7 @@ class Edge{
         // Destructor
         ~Edge();
         // Getters
+        int getId();
         int getTargetId();
         Edge* getNextEdge();
         float getWeight();

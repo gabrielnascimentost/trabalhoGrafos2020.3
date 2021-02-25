@@ -28,6 +28,10 @@ Edge::~Edge(){ // destrutor
 }
 
 // Getters
+int Edge::getId()//get do id do vertice de partida da aresta
+{
+    return this->id;//retorna o id do vertice de partida da aresta
+}
 int Edge::getTargetId(){ // get do id do vertice alvo da aresta
 
     return this->target_id;//retorna o id do vertice alvo da aresta

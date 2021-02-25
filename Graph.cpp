@@ -117,7 +117,7 @@ void Graph::insertEdge(int id, int target_id, float weight)//inseri aresta passa
         return;//e volta
     }
     else{//caso tenha os 2
-        nosGrafo[id]->insertEdge(target_id,weight);//insere aresta no grafo passando o vertice final e peso 
+        nosGrafo[id]->insertEdge(id, target_id,weight);//insere aresta no grafo passando o vertice inicial, final e peso 
         cout << "Aresta inserida com sucesso!\n";//printa aresta inserida com sucesso
     }
 }
