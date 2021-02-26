@@ -1,3 +1,4 @@
+
 #include "Graph.h"
 #include "Node.h"
 #include "Edge.h"
@@ -165,13 +166,14 @@ float Graph::dijkstra(int idSource, int idTarget){
 }
 
 //function that prints a topological sorting
-void topologicalSorting(){
+void Graph::topologicalSorting(){
 
 }
 
-void breadthFirstSearch(ofstream& output_file){
+void Graph::breadthFirstSearch(ofstream& output_file){
 
 }
+
 Graph* Graph::getVertexInduced(int* listIdNodes){
 
 }
