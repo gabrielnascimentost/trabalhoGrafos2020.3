@@ -4,56 +4,56 @@
 using namespace std;
 
 /**************************************************************************************************
- * Defining the Edge's methods definindo metodos das arestas
+ * Defining the Edge's methods (definindo metodos das arestas)
 **************************************************************************************************/
 
 // Constructor
-Edge::Edge(int target_id){ 
+Edge::Edge(int target_id){  // construtor da aresta passando como parametro o identificador da aresta
 
-    this->target_id = target_id;
-    this->next_edge = nullptr;
-    this->weight = 0;
+    this->target_id = target_id; // defini identificador
+    this->next_edge = nullptr; // proxima aresta declara como null
+    this->weight = 0; // defini o peso como 0
 
 }
 
 // Destructor
-Edge::~Edge(){
+Edge::~Edge(){ // destrutor
 
-    if (this->next_edge != nullptr){
-        delete this->next_edge;
-        this->next_edge = nullptr;
+    if (this->next_edge != nullptr){ //se a proxima aresta for diferente de null
+        delete this->next_edge; // deleta a proxima aresta
+        this->next_edge = nullptr; // proxima aresta igual a null
     }
 
 }
 
 // Getters
-int Edge::getTargetId(){
+int Edge::getTargetId(){ // get do id da aresta
 
-    return this->target_id;
-
-}
-
-Edge* Edge::getNextEdge(){
-
-    return this->next_edge;
+    return this->target_id;//retorna o id da aresta
 
 }
 
-float Edge::getWeight(){
+Edge* Edge::getNextEdge(){ //get da proxima aresta
 
-    return this->weight;
+    return this->next_edge;// retorna a proxima aresta
+
+}
+
+float Edge::getWeight(){// get do peso da aresta
+
+    return this->weight;//retorna o peso da aresta
 
 }
 
 // Setters
-void Edge::setNextEdge(Edge* edge){
+void Edge::setNextEdge(Edge* edge){ // set de valores da proxima aresta passando como parametro o ponteiro pra aresta
 
-    this->next_edge = edge;
+    this->next_edge = edge; // declara a proxima aresta como a aresta passada por parametro 
 
 }
 
-void Edge::setWeight(float weight){
+void Edge::setWeight(float weight){//set do peso da aresta
 
-    this->weight = weight;
+    this->weight = weight;//define o peso da aresta como o peso passado por parametro
 
 }

@@ -170,6 +170,10 @@ void Graph::topologicalSorting(){
 
 }
 
+void Graph::breadthFirstSearch(ofstream& output_file){
+
+}
+
 Graph* Graph::getVertexInduced(int* listIdNodes){
 
 }
