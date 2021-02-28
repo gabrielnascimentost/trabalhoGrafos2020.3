@@ -171,6 +171,7 @@ void Graph::topologicalSorting(){
 }
 
 Graph* Graph::getVertexInduced(int* listIdNodes){
+    vector<int> *nosIdFromGrafo = new vector<int>(this->nosGrafo.size());
 
 }
 
