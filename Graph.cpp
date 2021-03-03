@@ -20,11 +20,11 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node) //contrutor, passando como parametro, ordem, direçao se tem ou nao, peso da aresta e peso do no
+Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node) //construtor, passando como parametro, ordem, direção se tem ou nao, peso da aresta e peso do no
 {
 
     this->order = order;//ordem vai receber ordem
-    this->directed = directed;//direçao se tem ou nao
+    this->directed = directed;//direção se tem ou nao
     this->weighted_edge = weighted_edge;//define peso das arestas (se tem ou nao)
     this->weighted_node = weighted_node;//peso nos vertices
     this->first_node = this->last_node = nullptr;//primeiro e ultimo no alocado como null
@@ -195,7 +195,7 @@ void Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verif
             {
                if(v->getNextNode() != visitados[i])//se o vertice ainda nao foi visitado
                 {
-                    verificaCaminho(v->getNextNode(),indice,visitados);//entra recursivamente para inserir esse vertice no vetor soluçao
+                    verificaCaminho(v->getNextNode(),indice,visitados);//entra recursivamente para inserir esse vertice no vetor solução
                 }
                 else//se o vertice ja esta no vetor solução nao faz nada
                 {

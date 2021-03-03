@@ -5,6 +5,7 @@
 #ifndef NODE_H_INCLUDED
 #define NODE_H_INCLUDED
 #include "Edge.h" // Include of the Edge class (incluindo o arestas.h)
+#include <vector>
 
 using namespace std;
 
@@ -20,8 +21,10 @@ class Node{ //classe vertice
         unsigned int out_degree;// int sem sinal (nao sei oq) ** e o valor de saida 
         float weight;// peso dos vertices
         Node* next_node;// proximo vertice
+        
 
     public: // declaraçoes publicas
+        vector<int> ListaAdj; //cria lista de adjacente pelo id do vertice
         // Constructor
         Node(int id); // construtor, passando como parametro o identificador do vertice
         // Destructor
@@ -48,6 +51,7 @@ class Node{ //classe vertice
         void decrementInDegree();//decrementa grau de entrada
         Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
         // Auxiliar methods (metodos auxiliares)
+        
 
 };
 

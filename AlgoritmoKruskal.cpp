@@ -26,7 +26,7 @@ Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore ger
                 AGM->insertNode(aresta->getId()); //cria esse vertice novo na agm*/
             }
 
-            if (!AGM->searchNode(aresta->getTargetId())) {//se nao possui o segunudo vertice (ou vertice alvo)
+            if (!AGM->searchNode(aresta->getTargetId())) {//se nao possui o segundo vertice (ou vertice alvo)
                 AGM->insertNode(aresta->getTargetId());//cria esse vertice na agm
             }
 
@@ -35,7 +35,7 @@ Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore ger
 
             if (!ehCiclo(vertice1, vertice2)) 
             {//verifica se forma ciclo entre os vertices, se nao formar...
-                AGM->insertEdge(vertice1->getId(),vertice2->getId(),aresta->getWeight());//insere a aresta na agm com os vertices originais como ligaçao
+                AGM->insertEdge(vertice1->getId(),vertice2->getId(),aresta->getWeight());//insere a aresta na agm com os vertices originais como ligação
             }
         }
 
@@ -46,7 +46,14 @@ Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore ger
 }
 
 bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
-    
-
-    return false;
+    //trava no vertice 1, verifica os adjacentes do vertice 2 se existe aresta com o vertice 1.
+    for(auto i = vertice1->ListaAdj.begin(); i!= vertice1->ListaAdj.end();i++)//verifica todas as adjacências do vertice 1
+    {
+        for (auto j = vertice2->ListaAdj.begin(); j != vertice2->ListaAdj.end(); j++)//verifica todas as adjacências do vertice 2
+        {
+            if((vertice1->getId() != *i && vertice2->getId() != *j) && (*i == *j) )//verifica se tem algum vertice que interliga 1 e 2 indiretamente
+                return true;//se tem retorna verdadeiro (que há ciclo)
+        }
+    }
+    return false;//se nao tem retorna falso
 }

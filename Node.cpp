@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "Edge.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ Node::Node(int id){ // construtor passando o identificador como parametro
     this->first_edge = nullptr;//declara a primeira aresta como null
     this->last_edge = nullptr;//declara a ultima aresta como null
     this->next_node = nullptr;//poe o proximo vertice como null
+    
 
 };//fim do construtor
 
@@ -104,14 +106,14 @@ void Node::insertEdge(int id, int target_id, float weight){ //insere aresta pass
         edge->setWeight(weight);//coloca um peso, se nao tiver o padrao é 0
         this->last_edge->setNextEdge(edge);// a ultima aresta do vertice é declarada como proxima 
         this->last_edge = edge;// e a aresta é setada como a ultima (ou seja, a que foi implementada agora passa a ser a ultima e a antiga passa a ser a proxima)
-
+        this->ListaAdj.push_back(last_edge->getId());
     }
     else{ // se for a primeira aresta do vertice
          // Allocating the new edge and keeping the integrity of the edge list (alocaçao mantendo a integridade das arestas)
         this->first_edge = new Edge(id, target_id);//primeira aresta passa a receber uma nova aresta
         this->first_edge->setWeight(weight);//seta o peso da aresta (se houver)
         this->last_edge = this->first_edge;//ultima aresta e definida como a primeira
-
+        this->ListaAdj.push_back(this->last_edge->getId());
     }//fim da alocaçao de arestas
 
 }
@@ -129,10 +131,13 @@ void Node::removeAllEdges(){ // remove todas as arestas
             delete aux;//deleta a aresta auxiliar
             /*OBS: acho que aqui deveria ter uma linha de codigo aux = next e ai repetir o processo*/
         } // sai do while
-
+         for(auto i = this->ListaAdj.begin(); i != this->ListaAdj.end(); i++)
+        {
+            this->ListaAdj.erase(i);
+        }
     }//sai do if
-
-    this->first_edge = this->last_edge = nullptr; //se nao tem mais de uma aresta é pq tem uma ou zero, entao a primeira e a ultima sao colocadas como null
+   
+    this->first_edge = this->last_edge = nullptr; //se nao tem aresta, entao a primeira e a ultima sao colocadas como null
 
 }//fim do removedor de todas as arestas
 
@@ -140,6 +145,11 @@ int Node::removeEdge(int id, bool directed, Node* target_node){  //remove uma ar
     // Verifies whether the edge to remove is in the node
     if(this->searchEdge(id)){ // se a aresta existe (verifica se a aresta existe no grafo)
 
+        for(auto i= this->ListaAdj.begin(); i!=this->ListaAdj.end(); i++)
+        {
+            if(*i == id)
+             this->ListaAdj.erase(i);
+        }
         Edge* aux = this->first_edge; // o auxiliar recebe a primeira aresta
         Edge* previous = nullptr; // o anterior recebe null
         // Searching for the edge to be removed (busca a aresta a ser removida)
@@ -231,3 +241,4 @@ Edge* Node::hasEdgeBetween(int target_id)//verifica se existe aresta entre passa
     }//se sair é por que nao tem a aresta
     return nullptr;//portanto passe null caso nao encontre
 }//fim da busca pela aresta
+
