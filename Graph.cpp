@@ -12,6 +12,7 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -132,8 +133,8 @@ void Graph::removeNode(int id){
 
 bool Graph::searchNode(int id)
 {
-    for (int i = 0; i < nosGrafo.size(); i++)
-        if (nosGrafo[i]->getId() == id)
+    for (auto no : nosGrafo)
+        if (no->getId() == id)
             return true;
     return false;
 }
@@ -149,10 +150,30 @@ Node *Graph::getNode(int id)
 
 //Function that prints a set of edges belongs breadth tree
 
-void Graph::breadthFirstSearch(ofstream &output_file){
-    
+void Graph::breadthFirstSearch(int idNo){
+    Node *primeiro = getNode(idNo);
+    vector<Node*> *filaNos = new vector<Node*>;
+    filaNos->push_back(primeiro);
+    auxBreadthFirstSearch(*filaNos);
 }
 
+void Graph::auxBreadthFirstSearch(vector<Node *> nosFila) {
+    while(!nosFila.empty()){
+        Node *auxNo = nosFila.front();
+        cout << "No visitado:" << auxNo->getId() << endl;
+        auxNo->setVisited(true);
+
+        for(Node *adj : auxNo->getAdjNodes()){
+            if(!adj->isVisited()){
+                int aux = count(nosFila.begin(), nosFila.end(), adj);
+                if(aux == 0){
+                    nosFila.push_back(adj);
+                }
+            }
+        }
+        nosFila.erase(nosFila.begin());
+    }
+}
 
 
 float Graph::floydMarshall(int idSource, int idTarget){

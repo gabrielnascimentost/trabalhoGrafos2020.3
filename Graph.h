@@ -48,6 +48,7 @@ class Graph{
         //methods phase1
         void topologicalSorting(); // ordenacao topologica de um DAG
         void breadthFirstSearch(int id); //busca em largura a partir de um no
+        void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
         Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
         Graph* agmPrim(); // arvore geradora minima de prim

@@ -5,6 +5,7 @@
 #ifndef NODE_H_INCLUDED
 #define NODE_H_INCLUDED
 #include "Edge.h" // Include of the Edge class (incluindo o arestas.h)
+#include <vector>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class Node{ //classe vertice
         unsigned int out_degree;// int sem sinal (nao sei oq) ** e o valor de saida 
         float weight;// peso dos vertices
         Node* next_node;// proximo vertice
+        bool visited = false;
 
     public: // declaraçoes publicas
         // Constructor
@@ -46,7 +48,17 @@ class Node{ //classe vertice
         void decrementOutDegree();//decrementa grau de saida
         void incrementInDegree();//incrementa grau de entrada
         void decrementInDegree();//decrementa grau de entrada
-        Edge* hasEdgeBetween(int target_id);//ainda nao sei o que faz exatamente
+        Edge* hasEdgeBetween(int target_id);
+        vector<Node *> adjNodes;
+
+    bool isVisited() const;
+
+    void setVisited(bool visited);
+
+    const vector<Node *> &getAdjNodes() const;
+
+    void setAdjNodes(const vector<Node *> &adjNodes);
+//ainda nao sei o que faz exatamente
         // Auxiliar methods (metodos auxiliares)
 
 };

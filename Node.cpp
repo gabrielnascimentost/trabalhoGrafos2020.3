@@ -231,3 +231,19 @@ Edge* Node::hasEdgeBetween(int target_id)//verifica se existe aresta entre passa
     }//se sair é por que nao tem a aresta
     return nullptr;//portanto passe null caso nao encontre
 }//fim da busca pela aresta
+
+bool Node::isVisited() const {
+    return visited;
+}
+
+void Node::setVisited(bool visited) {
+    Node::visited = visited;
+}
+
+const vector<Node *> &Node::getAdjNodes() const {
+    return adjNodes;
+}
+
+void Node::setAdjNodes(const vector<Node *> &adjNodes) {
+    Node::adjNodes = adjNodes;
+}
