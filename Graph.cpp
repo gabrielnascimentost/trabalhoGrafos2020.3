@@ -275,10 +275,5 @@ list<Edge*> Graph::criaListaArestas()//cria um vetor com as arestas do grafo
 }
 
 Edge * Graph::getMimWeightEdge(Graph *g, Graph *agmPrim) {
-    Edge *edgeMimWeight = new Edge();
-    int mimWeight = -1;
-    for (Edge *edge : g->getArestasGrafo()){
-        if(!(agmPrim->searchNode(edge->)))
-    }
 
 }

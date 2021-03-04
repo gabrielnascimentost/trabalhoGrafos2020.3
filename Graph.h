@@ -62,7 +62,6 @@ class Graph{
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
         float greedRactiveRandom(); // guloso randomizado reativo
-        float greedRactiveRandom();
 
     const vector<Edge *> &getArestasGrafo() const;
 
