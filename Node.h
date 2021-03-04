@@ -30,8 +30,13 @@ class Node{ //classe vertice
         // Destructor
         ~Node(); // destrutor
         // Getters (declaraçao dos gets)
+<<<<<<< HEAD
         Edge* getFirstEdge();//retorna o primeiro aresta
         Edge* getLastEdge();//retorna o ultimo aresta
+=======
+        Edge* getFirstEdge();//retorna a primeira aresta
+        Edge* getLastEdge();//retorna a ultima aresta
+>>>>>>> 3d54b69d9f7839e734b067dd8ad919bbac204e7a
         int getId();//retorna o identificador
         int getInDegree();//retorna o valor de entrada do vertice *talvez seja
         int getOutDegree();//retorna o valor de saida do vertice *talvez seja
