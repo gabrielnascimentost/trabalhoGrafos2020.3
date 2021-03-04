@@ -14,6 +14,7 @@
 #include <iomanip>
 #include <list>
 #include <algorithm>
+#include "AlgoritmoKruskal.h"
 
 using namespace std;
 
@@ -206,11 +207,19 @@ Graph* Graph::getVertexInduced(int* listIdNodes){
 }
 
 Graph* Graph::agmKuskal(){
-
+    AlgoritmoKruskal *algoritmoKruskal = new AlgoritmoKruskal();
+    return algoritmoKruskal->findAGMKruskal(this);
 }
+
+void Graph::imprimeSolucaoKuskal(Graph *graph) {
+    AlgoritmoKruskal *algoritmoKruskal = new AlgoritmoKruskal();
+    algoritmoKruskal->imprimeSolucao(graph);
+}
+
 Graph* Graph::agmPrim(){
 
 }
+
 void Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verifica se há caminho no grafo, passando o vertice inicial, o indice e o vetor que vai retornar
 {
     visitados[indice]=v;//insere o primeiro vertice no primeiro indice do vetor

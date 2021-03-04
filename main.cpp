@@ -9,6 +9,7 @@
 #include <chrono>
 #include "Graph.h"
 #include "Node.h"
+#include "AlgoritmoKruskal.h"
 
 using namespace std;
 
@@ -147,14 +148,19 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             //AGM Prim; (4)
         case 4:{
 
-
-
             break;
         }
 
            //AGM - Kruscal; (5)
         case 5:{
-
+            Graph *newAGM;
+            newAGM = graph->agmKuskal();
+            string optionUser;
+            cout << "Deseja imprimir a solucao? S ou N";
+            cin >> optionUser;
+            if(optionUser == "S"){
+                newAGM->imprimeSolucaoKuskal(newAGM);
+            }
             break;
         }
 
