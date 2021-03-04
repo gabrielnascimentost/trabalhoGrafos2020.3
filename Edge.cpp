@@ -16,6 +16,8 @@ Edge::Edge(int target_id){
 
 }
 
+Edge::Edge() {}
+
 // Destructor
 Edge::~Edge(){
 

@@ -24,6 +24,7 @@ class Graph{
         Node* first_node; // primeiro vertice (nó)
         Node* last_node; // ultimo vertice (nó)
         vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
+        vector<Edge*> arestasGrafo;
 
     public:
         //Constructor
@@ -52,13 +53,19 @@ class Graph{
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
         Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
         Graph* agmPrim(); // arvore geradora minima de prim
+        Edge* getMimWeightEdge(Graph *g, Graph *agmPrim);
         float floydMarshall(int idSource, int idTarget); // metodo floyd
         float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
 
         //methods phase1
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
-        float greedRactiveRandom(); // guloso randomizado reativo
+        float greedRactiveRandom();
+
+    const vector<Edge *> &getArestasGrafo() const;
+
+    void setArestasGrafo(const vector<Edge *> &arestasGrafo);
+    // guloso randomizado reativo
     private:
         //Metodos Auxiliares
 

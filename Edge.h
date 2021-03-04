@@ -19,7 +19,8 @@ class Edge{
     public:
         // Constructor
         Edge(int target_id);
-        // Destructor
+        Edge();
+    // Destructor
         ~Edge();
         // Getters
         int getTargetId();

@@ -147,6 +147,14 @@ Node *Graph::getNode(int id)
     return nosGrafo[id];
 }
 
+const vector<Edge *> &Graph::getArestasGrafo() const {
+    return arestasGrafo;
+}
+
+void Graph::setArestasGrafo(const vector<Edge *> &arestasGrafo) {
+    Graph::arestasGrafo = arestasGrafo;
+}
+
 
 //Function that prints a set of edges belongs breadth tree
 
@@ -200,5 +208,14 @@ Graph* Graph::agmKuskal(){
 
 }
 Graph* Graph::agmPrim(){
+
+}
+
+Edge * Graph::getMimWeightEdge(Graph *g, Graph *agmPrim) {
+    Edge *edgeMimWeight = new Edge();
+    int mimWeight = -1;
+    for (Edge *edge : g->getArestasGrafo()){
+        if(!(agmPrim->searchNode(edge->)))
+    }
 
 }
