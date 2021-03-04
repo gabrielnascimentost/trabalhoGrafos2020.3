@@ -14,8 +14,8 @@ class Node{ //classe vertice
 
     // Attributes (atributos)
     private:
-        Edge* first_edge; //ponteiro para o primeiro vertice
-        Edge* last_edge; // ponteiro para o ultimo vertice
+        Edge* first_edge; //ponteiro para o primeiro aresta
+        Edge* last_edge; // ponteiro para o ultimo aresta
         int id; // identificador do vertice
         unsigned int in_degree; // int sem sinal (nao sei oq) **deve ser o valor de entrada
         unsigned int out_degree;// int sem sinal (nao sei oq) ** e o valor de saida 
@@ -23,7 +23,9 @@ class Node{ //classe vertice
         Node* next_node;// proximo vertice
         bool visited = false;
 
+
     public: // declaraçoes publicas
+        vector<int> ListaAdj; //cria lista de adjacente pelo id do vertice
         // Constructor
         Node(int id); // construtor, passando como parametro o identificador do vertice
         // Destructor
@@ -41,14 +43,14 @@ class Node{ //classe vertice
         void setWeight(float weight);//insere o peso no vertice
         // Other methods
         bool searchEdge(int target_id);//existe esse vertice no grafo? passando o id do vertice alvo
-        void insertEdge(int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
+        void insertEdge(int id, int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
         void removeAllEdges();// remove todas as arestas
         int removeEdge(int id, bool directed, Node* target_node);// remove aresta
         void incrementOutDegree();//incrementa grau de saida
         void decrementOutDegree();//decrementa grau de saida
         void incrementInDegree();//incrementa grau de entrada
         void decrementInDegree();//decrementa grau de entrada
-        Edge* hasEdgeBetween(int target_id);
+        Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
         vector<Node *> adjNodes;
 
     bool isVisited() const;
@@ -60,6 +62,7 @@ class Node{ //classe vertice
     void setAdjNodes(const vector<Node *> &adjNodes);
 //ainda nao sei o que faz exatamente
         // Auxiliar methods (metodos auxiliares)
+
 
 };
 

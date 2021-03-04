@@ -12,6 +12,7 @@ class Edge{
 
     // Attributes
     private:
+        int id;
         int target_id;
         Edge* next_edge;
         float weight;
@@ -23,6 +24,7 @@ class Edge{
     // Destructor
         ~Edge();
         // Getters
+        int getId();
         int getTargetId();
         Edge* getNextEdge();
         float getWeight();

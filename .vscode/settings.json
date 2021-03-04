@@ -1,5 +1,18 @@
 {
     "cSpell.language": ",pt,pt_BR",
+    "cSpell.words": [
+        "Edge's",
+        "Graph's",
+        "Kuskal",
+        "Prim",
+        "algoritmo",
+        "dijkstra",
+        "kruskal",
+        "proxima",
+        "vertice",
+        "vertices"
+    ]
+    "cSpell.language": ",pt,pt_BR",
     "files.associations": {
         "iosfwd": "cpp"
     }
