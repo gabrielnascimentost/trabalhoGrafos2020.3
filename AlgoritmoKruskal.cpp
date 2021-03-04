@@ -57,3 +57,13 @@ bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
     }
     return false;//se nao tem retorna falso
 }
+
+void AlgoritmoKruskal::imprimeSolucao(Graph *grafo)
+{
+    cout << "Arvore Geradora Minima - Kruskal:" << endl;
+    for (auto i = grafo->getFirstNode()->getFirstEdge(); i != grafo->getLastNode()->getLastEdge(); i->getNextEdge())
+    {
+        cout << "(" << i->getId() << "," << i->getTargetId() << ") ";
+    }
+    cout << endl;
+}
