@@ -27,7 +27,8 @@ class Graph{
 
     public:
         //Constructor
-        Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
+        Graph(int order, bool directed, bool weighted_edge, bool weighted_node); // construtor de grafos com parametros
+        Graph(); // construtor para ser usado em grafos auxiliares
         //Destructor
         ~Graph();
         //Getters
@@ -58,9 +59,11 @@ class Graph{
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
         float greedRactiveRandom(); // guloso randomizado reativo
-    private:
         //Metodos Auxiliares
-
+        bool ehConexo();
+        void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
+        list<Edge*> criaListaArestas();
+    private:
 };
 
 #endif // GRAPH_H_INCLUDED

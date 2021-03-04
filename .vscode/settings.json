@@ -1,3 +1,15 @@
 {
-    "cSpell.language": ",pt,pt_BR"
+    "cSpell.language": ",pt,pt_BR",
+    "cSpell.words": [
+        "Edge's",
+        "Graph's",
+        "Kuskal",
+        "Prim",
+        "algoritmo",
+        "dijkstra",
+        "kruskal",
+        "proxima",
+        "vertice",
+        "vertices"
+    ]
 }
