@@ -53,14 +53,11 @@ class Node{ //classe vertice
         Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
         vector<Node *> adjNodes;
 
-    bool isVisited() const;
-
-    void setVisited(bool visited);
-
-    const vector<Node *> &getAdjNodes() const;
-
-    void setAdjNodes(const vector<Node *> &adjNodes);
-//ainda nao sei o que faz exatamente
+        bool isVisited() const;
+        void setVisited(bool visited);
+        const vector<Node *> &getAdjNodes() const;
+        void setAdjNodes(const vector<Node *> &adjNodes);
+        //ainda nao sei o que faz exatamente
         // Auxiliar methods (metodos auxiliares)
 
 

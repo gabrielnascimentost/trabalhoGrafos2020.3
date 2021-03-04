@@ -51,9 +51,19 @@ bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
     {
         for (auto j = vertice2->ListaAdj.begin(); j != vertice2->ListaAdj.end(); j++)//verifica todas as adjacências do vertice 2
         {
-            if((vertice1->getId() != *i && vertice2->getId() != *j) && (*i == *j) )//verifica se tem algum vertice que interliga 1 e 2 indiretamente
+            if((*i == *j) && (vertice1->getId() != *i && vertice2->getId() != *j))//verifica se tem algum vertice que interliga 1 e 2 indiretamente
                 return true;//se tem retorna verdadeiro (que há ciclo)
         }
     }
     return false;//se nao tem retorna falso
+}
+
+void AlgoritmoKruskal::imprimeSolucao(Graph *grafo)
+{
+    cout << "Arvore Geradora Minima - Kruskal:" << endl;
+    for (auto i = grafo->getFirstNode()->getFirstEdge(); i != grafo->getLastNode()->getLastEdge(); i->getNextEdge())
+    {
+        cout << "(" << i->getId() << "," << i->getTargetId() << ") ";
+    }
+    cout << endl;
 }
