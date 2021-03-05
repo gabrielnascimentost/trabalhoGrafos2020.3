@@ -20,6 +20,7 @@ class Edge{
     public:
         // Constructor
         Edge(int target_id);
+        Edge(int id, int target_id);
         Edge();
     // Destructor
         ~Edge();

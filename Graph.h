@@ -24,9 +24,8 @@ class Graph{
         Node* first_node; // primeiro vertice (nó)
         Node* last_node; // ultimo vertice (nó)
         vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
-        vector<Edge*> arestasGrafo;
 
-    public:
+public:
         //Constructor
         Graph(int order, bool directed, bool weighted_edge, bool weighted_node); // construtor de grafos com parametros
         Graph(); // construtor para ser usado em grafos auxiliares
@@ -58,22 +57,18 @@ class Graph{
         Edge* getMimWeightEdge(Graph *g, Graph *agmPrim);
         float floydMarshall(int idSource, int idTarget); // metodo floyd
         float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
+        void setArestasGrafo(const vector<Edge *> &arestasGrafo);
+        bool ehConexo();
+        void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
+        list<Edge*> criaListaArestas();
+        vector<Edge*> arestasGrafo;
+        const vector<Edge *> &getArestasGrafo() const;
 
         //methods phase1
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
         float greedRactiveRandom(); // guloso randomizado reativo
 
-    const vector<Edge *> &getArestasGrafo() const;
-
-    void setArestasGrafo(const vector<Edge *> &arestasGrafo);
-    // guloso randomizado reativo
-    private:
-        //Metodos Auxiliares
-        bool ehConexo();
-        void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
-        list<Edge*> criaListaArestas();
-    private:
 };
 
 #endif // GRAPH_H_INCLUDED
