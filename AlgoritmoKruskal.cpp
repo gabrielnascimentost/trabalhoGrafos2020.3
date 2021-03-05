@@ -45,6 +45,8 @@ Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore ger
     } else {
         cout << "O grafo eh desconexo." << endl;
     }
+
+
 }
 
 bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
@@ -63,9 +65,9 @@ bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
 void AlgoritmoKruskal::imprimeSolucao(Graph *grafo)
 {
     cout << "Arvore Geradora Minima - Kruskal:" << endl;
-    for (auto i = grafo->getFirstNode()->getFirstEdge(); i != grafo->getLastNode()->getLastEdge(); i->getNextEdge())
-    {
-        cout << "(" << i->getId() << "," << i->getTargetId() << ") ";
+    for (auto edge : grafo->arestasGrafo){
+        cout << "(" << edge->getId() << ", " << edge->getTargetId() << ") ";
     }
     cout << endl;
+    system("pause");
 }

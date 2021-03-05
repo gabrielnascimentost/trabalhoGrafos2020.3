@@ -65,3 +65,11 @@ void Edge::setWeight(float weight){//set do peso da aresta
 
 }
 
+void Edge::setId(int id) {
+    Edge::id = id;
+}
+
+void Edge::setTargetId(int targetId) {
+    target_id = targetId;
+}
+

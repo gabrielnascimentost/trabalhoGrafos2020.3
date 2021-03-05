@@ -31,7 +31,9 @@ class Edge{
         float getWeight();
         // Setters
         void setNextEdge(Edge* edge);
-        void setWeight(float weight); 
+        void setWeight(float weight);
+        void setId(int id);
+        void setTargetId(int targetId);
 
 }; 
 

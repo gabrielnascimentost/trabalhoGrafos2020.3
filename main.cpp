@@ -156,7 +156,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             Graph *newAGM;
             newAGM = graph->agmKuskal();
             string optionUser;
-            cout << "Deseja imprimir a solucao? S ou N";
+            cout << "Deseja imprimir a solucao (S ou N)? ";
             cin >> optionUser;
             if(optionUser == "S"){
                 newAGM->imprimeSolucaoKuskal(newAGM);
@@ -188,6 +188,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             //Algoritmo Guloso Randomizado Reativo (10)
         case 10:{
 
+            break;
+        }
+        case 0:{
+            cout << "Bye bye!" << endl;
             break;
         }
         default:

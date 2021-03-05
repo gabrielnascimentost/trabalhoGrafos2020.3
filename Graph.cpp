@@ -114,16 +114,20 @@ void Graph::insertNode(int id)//insere vertice passando id
 
 void Graph::insertEdge(int id, int target_id, float weight)//inseri aresta passando id do vertice de origem, vertice alvo, e o peso
 {
-    if(!searchNode(id)){//se nao existir o no
-        cout << "O no de origem nao existe no grafo.\n";//printa que nao tem vertice
-        return;//e volta
-    }else if(!searchNode(target_id)){//se nao existir o vertice alvo
-        cout << "O no destino nao existe no grafo.\n";//printa que nao existe
-        return;//e volta
-    }
-    else{//caso tenha os 2
-        nosGrafo[id]->insertEdge(id, target_id,weight);//insere aresta no grafo passando o vertice inicial, final e peso
-        cout << "Aresta inserida com sucesso!\n";//printa aresta inserida com sucesso
+    if(!nosGrafo.empty()){
+        if(!searchNode(id)){//se nao existir o no
+            cout << "O no de origem nao existe no grafo.\n";//printa que nao tem vertice
+            return;//e volta
+        }else if(!searchNode(target_id)){//se nao existir o vertice alvo
+            cout << "O no destino nao existe no grafo.\n";//printa que nao existe
+            return;//e volta
+        }
+        else{//caso tenha os 2
+            Edge *auxEdge = new Edge(id, target_id);
+            arestasGrafo.push_back(auxEdge);
+            nosGrafo[id]->insertEdge(id, target_id,weight);//insere aresta no grafo passando o vertice inicial, final e peso
+            cout << "Aresta inserida com sucesso!\n";//printa aresta inserida com sucesso
+        }
     }
 }
 
@@ -209,12 +213,12 @@ Graph* Graph::getVertexInduced(int* listIdNodes){
 }
 
 Graph* Graph::agmKuskal(){
-    AlgoritmoKruskal *algoritmoKruskal = new AlgoritmoKruskal();
+    AlgoritmoKruskal *algoritmoKruskal;
     return algoritmoKruskal->findAGMKruskal(this);
 }
 
 void Graph::imprimeSolucaoKuskal(Graph *graph) {
-    AlgoritmoKruskal *algoritmoKruskal = new AlgoritmoKruskal();
+    AlgoritmoKruskal *algoritmoKruskal;
     algoritmoKruskal->imprimeSolucao(graph);
 }
 
