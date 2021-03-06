@@ -126,6 +126,7 @@ void Graph::insertEdge(int id, int target_id, float weight)//inseri aresta passa
             Edge *auxEdge = new Edge(id, target_id);
             arestasGrafo.push_back(auxEdge);
             nosGrafo[id]->insertEdge(id, target_id,weight);//insere aresta no grafo passando o vertice inicial, final e peso
+            nosGrafo[id]->setLastEdge(auxEdge);
             cout << "Aresta inserida com sucesso!\n";//printa aresta inserida com sucesso
         }
     }
@@ -210,6 +211,7 @@ void Graph::topologicalSorting(){
 Graph* Graph::getVertexInduced(int* listIdNodes){
     vector<int> *nosIdFromGrafo = new vector<int>(this->nosGrafo.size());
 
+
 }
 
 Graph* Graph::agmKuskal(){
@@ -226,7 +228,7 @@ Graph* Graph::agmPrim(){
 
 }
 
-void Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verifica se há caminho no grafo, passando o vertice inicial, o indice e o vetor que vai retornar
+vector<Node*> Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verifica se há caminho no grafo, passando o vertice inicial, o indice e o vetor que vai retornar
 {
     visitados[indice]=v;//insere o primeiro vertice no primeiro indice do vetor
     indice++;//sobe o indice
@@ -252,7 +254,7 @@ void Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verif
     {
         //nao faz nada
     }
-
+    return visitados;
 
 }
 
@@ -265,7 +267,7 @@ bool Graph::ehConexo(){ // verifica se o grafo é conexo
     }
     else//em todos os outros casos
     {
-        verificaCaminho(this->first_node,0,vet);//verifica se tem pelo menos um caminho no grafo
+        vet = verificaCaminho(this->first_node,0,vet);//verifica se tem pelo menos um caminho no grafo
         if(vet.size() == nosGrafo.size() )//depois da verificaçao se o tamanho do vetor for o mesmo do numero de vertices no grafo
         {
             return true;//retorna que é conexo

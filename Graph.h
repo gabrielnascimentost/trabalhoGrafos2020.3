@@ -59,7 +59,7 @@ public:
         float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
         void setArestasGrafo(const vector<Edge *> &arestasGrafo);
         bool ehConexo();
-        void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
+        vector<Node*> verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
         list<Edge*> criaListaArestas();
         vector<Edge*> arestasGrafo;
         const vector<Edge *> &getArestasGrafo() const;

@@ -104,7 +104,7 @@ void Node::insertEdge(int id, int target_id, float weight){ //insere aresta pass
         // Allocating the new edge and keeping the integrity of the edge list (aloca uma nova aresta e mantem a integridade da lista de arestas anteriores)
         Edge* edge = new Edge(id, target_id);//declara uma nova aresta
         edge->setWeight(weight);//coloca um peso, se nao tiver o padrao é 0
-        this->last_edge->setNextEdge(edge);// a ultima aresta do vertice é declarada como proxima 
+        this->last_edge->setNextEdge(edge);// a ultima aresta do vertice é declarada como proxima
         this->last_edge = edge;// e a aresta é setada como a ultima (ou seja, a que foi implementada agora passa a ser a ultima e a antiga passa a ser a proxima)
         this->ListaAdj.push_back(target_id);
     }
@@ -256,5 +256,13 @@ const vector<Node *> &Node::getAdjNodes() const {
 
 void Node::setAdjNodes(const vector<Node *> &adjNodes) {
     Node::adjNodes = adjNodes;
+}
+
+void Node::setFirstEdge(Edge *firstEdge) {
+    first_edge = firstEdge;
+}
+
+void Node::setLastEdge(Edge *lastEdge) {
+    last_edge = lastEdge;
 }
 

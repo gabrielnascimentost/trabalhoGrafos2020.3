@@ -41,6 +41,9 @@ class Node{ //classe vertice
         // Setters (declaraçao do sets)
         void setNextNode(Node* node);//insere o proximo vertice
         void setWeight(float weight);//insere o peso no vertice
+        void setFirstEdge(Edge *firstEdge);
+        void setLastEdge(Edge *lastEdge);
+
         // Other methods
         bool searchEdge(int target_id);//existe esse vertice no grafo? passando o id do vertice alvo
         void insertEdge(int id, int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
@@ -53,12 +56,11 @@ class Node{ //classe vertice
         Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
         vector<Node *> adjNodes;
 
-        bool isVisited() const;
+    bool isVisited() const;
         void setVisited(bool visited);
         const vector<Node *> &getAdjNodes() const;
         void setAdjNodes(const vector<Node *> &adjNodes);
         //ainda nao sei o que faz exatamente
-        // Auxiliar methods (metodos auxiliares)
 
 
 };
