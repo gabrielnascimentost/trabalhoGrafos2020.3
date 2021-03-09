@@ -292,3 +292,4 @@ Edge * Graph::getEdge(int id, int idTarget) {
     }
     return nullptr;
 }
+
