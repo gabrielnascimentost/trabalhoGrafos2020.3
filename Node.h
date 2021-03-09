@@ -22,6 +22,7 @@ class Node{ //classe vertice
         float weight;// peso dos vertices
         Node* next_node;// proximo vertice
         bool visited = false;
+        int dist;
 
 
     public: // declaraçoes publicas
@@ -60,7 +61,11 @@ class Node{ //classe vertice
         void setVisited(bool visited);
         const vector<Node *> &getAdjNodes() const;
         void setAdjNodes(const vector<Node *> &adjNodes);
-        //ainda nao sei o que faz exatamente
+
+    int getDist() const;
+
+    void setDist(int dist);
+    //ainda nao sei o que faz exatamente
 
 
 };

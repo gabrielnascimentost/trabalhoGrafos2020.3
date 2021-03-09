@@ -190,7 +190,15 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             //Busca em largura; (6)
         case 6:{
-
+            int idNodeSearch;
+            cout << "Para realizar a busca em largura, informe o id do No: ";
+            cin >> idNodeSearch;
+            if(graph->searchNode(idNodeSearch)){
+                cout << "Realizando busca em largura..." << endl;
+                graph->breadthFirstSearch(idNodeSearch);
+                return;
+            }
+            cout << "No nao encontrado no grafo" << endl;
             break;
         }
             //Ordenação Topologica; (7)

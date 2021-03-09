@@ -118,6 +118,14 @@ void Node::insertEdge(int id, int target_id, float weight){ //insere aresta pass
 
 }
 
+int Node::getDist() const {
+    return dist;
+}
+
+void Node::setDist(int dist) {
+    Node::dist = dist;
+}
+
 void Node::removeAllEdges(){ // remove todas as arestas
     // Verifies whether there are at least one edge in the node
     if(this->first_edge != nullptr){ // se a primeira aresta é dif de null ( se existe aresta no grafo)

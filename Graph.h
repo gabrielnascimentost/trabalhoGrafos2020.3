@@ -45,6 +45,7 @@ public:
         void removeNode(int id);// remove vertice
         bool searchNode(int id); //verifica se o vertice existe no grafo
         Node* getNode(int id); // retorna um ponteiro pro vertice
+        Edge* getEdge(int id, int idTarget);
 
         //methods phase1
         void topologicalSorting(); // ordenacao topologica de um DAG
@@ -67,7 +68,12 @@ public:
         //methods phase1
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
-        float greedRactiveRandom(); // guloso randomizado reativo
+        float greedRactiveRandom();
+
+    const vector<Node *> &getNosGrafo() const;
+
+    void setNosGrafo(const vector<Node *> &nosGrafo);
+    // guloso randomizado reativo
 
 };
 

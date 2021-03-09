@@ -294,3 +294,22 @@ list<Edge*> Graph::criaListaArestas()//cria um vetor com as arestas do grafo
 Edge * Graph::getMimWeightEdge(Graph *g, Graph *agmPrim) {
 
 }
+
+const vector<Node *> &Graph::getNosGrafo() const {
+    return nosGrafo;
+}
+
+void Graph::setNosGrafo(const vector<Node *> &nosGrafo) {
+    Graph::nosGrafo = nosGrafo;
+}
+
+
+Edge * Graph::getEdge(int id, int idTarget) {
+    for (auto edge : this->arestasGrafo) {
+        if ((edge->getId() == id && edge->getTargetId() == idTarget)
+            || (edge->getId() == id && edge->getTargetId()  == idTarget)) {
+            return edge;
+        }
+    }
+    return nullptr;
+}
