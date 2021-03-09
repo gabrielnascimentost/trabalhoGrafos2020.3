@@ -153,7 +153,7 @@ Node *Graph::getNode(int id)//pega vertice pelo id
     if(!searchNode(id)){//pesquisa o vertice no grafo, se ele nao existir (!true = false && !false == true (ou seja se ele for falso vai entrar no if))
         cout << "O no nao existe no grafo!\n";//o vertice nao existe
     }
-    return nosGrafo[id];//se existir retorna o vertice
+    return nosGrafo.at(id);//se existir retorna o vertice
 }
 
 const vector<Edge *> &Graph::getArestasGrafo() const {
