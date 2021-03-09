@@ -10,8 +10,7 @@ using namespace std;
 
 class AlgoritmoKruskal {
 public:
-    AlgoritmoKruskal();
-    Graph* findAGMKruskal(Graph* grafo); // encontra a arvore geradora minima usando kruskal
+    static Graph* findAGMKruskal(Graph* grafo); // encontra a arvore geradora minima usando kruskal
     bool ehCiclo(Node* vertice1, Node* vertice2); // confere se o vertice 1 e 2 passado por parametro geram ciclo
-    void imprimeSolucao(Graph* grafo); // imprime soluçao da agm caso a pessoa queira
+    static void imprimeSolucao(Graph* grafo); // imprime soluçao da agm caso a pessoa queira
 };

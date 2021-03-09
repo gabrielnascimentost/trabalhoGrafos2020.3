@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "Node.h"
 #include "AlgoritmoKruskal.h"
+#include "AlgoritmoDijkstra.h"
 
 using namespace std;
 
@@ -159,7 +160,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Caminho mínimo entre dois vértices usando Dijkstra (2)
         case 2:{
-
+            int id1, id2;
+            cout << "Digite os IDs dos vertices:" << endl;
+            cin >> id1 >> id2;
+            AlgoritmoDijkstra::doDijkstra(graph, id1,id2);
             break;
         }
 
@@ -178,12 +182,12 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
            //AGM - Kruscal; (5)
         case 5:{
             Graph *newAGM;
-            newAGM = graph->agmKuskal();
+            newAGM = AlgoritmoKruskal::findAGMKruskal(graph);
             string optionUser;
             cout << "Deseja imprimir a solucao (S ou N)? ";
             cin >> optionUser;
             if(optionUser == "S"){
-                newAGM->imprimeSolucaoKuskal(newAGM);
+                AlgoritmoKruskal::imprimeSolucao(newAGM);
             }
             break;
         }

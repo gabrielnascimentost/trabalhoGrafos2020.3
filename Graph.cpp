@@ -1,20 +1,9 @@
 
 #include "Graph.h"
-#include "Node.h"
-#include "Edge.h"
 #include <iostream>
-#include <fstream>
-#include <stack>
 #include <queue>
 #include <list>
-#include <math.h>
-#include <cstdlib>
-#include <ctime>
-#include <float.h>
-#include <iomanip>
-#include <list>
 #include <algorithm>
-#include "AlgoritmoKruskal.h"
 
 using namespace std;
 
@@ -212,16 +201,6 @@ Graph* Graph::getVertexInduced(int* listIdNodes){
     vector<int> *nosIdFromGrafo = new vector<int>(this->nosGrafo.size());
 
 
-}
-
-Graph* Graph::agmKuskal(){
-    AlgoritmoKruskal *algoritmoKruskal;
-    return algoritmoKruskal->findAGMKruskal(this);
-}
-
-void Graph::imprimeSolucaoKuskal(Graph *graph) {
-    AlgoritmoKruskal *algoritmoKruskal;
-    algoritmoKruskal->imprimeSolucao(graph);
 }
 
 Graph* Graph::agmPrim(){

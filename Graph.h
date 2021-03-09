@@ -52,8 +52,6 @@ public:
         void breadthFirstSearch(int id); //busca em largura a partir de um no
         void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
-        Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
-        void imprimeSolucaoKuskal(Graph *graph);
         Graph* agmPrim(); // arvore geradora minima de prim
         Edge* getMimWeightEdge(Graph *g, Graph *agmPrim);
         float floydMarshall(int idSource, int idTarget); // metodo floyd

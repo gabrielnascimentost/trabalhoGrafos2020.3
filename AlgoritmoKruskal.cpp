@@ -9,8 +9,6 @@
 
 using namespace std;
 
-AlgoritmoKruskal::AlgoritmoKruskal() {}
-
 Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore geradora minima usando algoritmo de kruskal
     if (grafo->ehConexo()) {//verifica se o grafo eh conexo
         Graph* AGM = new Graph(); //criou um grafo solução
