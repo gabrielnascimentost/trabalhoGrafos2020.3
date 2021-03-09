@@ -293,3 +293,56 @@ Edge * Graph::getEdge(int id, int idTarget) {
     return nullptr;
 }
 
+float Graph::greed(Node* proximovertice, list<int> solucao, float valorTotalPeso)
+{   
+    if(proximovertice!=nullptr)
+    {   
+        float menor = NULL;//atribui null pro menor
+        int vertice1; //grava o id do vertice
+        int vertice2; // e o vertice alvo da aresta
+    
+        for(auto i = proximovertice->getFirstEdge();i != proximovertice->getLastEdge(); i++)//percorre as arestas verificando a menor
+        {
+            if(menor = NULL)//se o menor ainda tiver null
+            {
+                menor = i->getWeight();//menor recebe o peso da aresta (primeira aresta)
+                vertice1 = i->getId();//vertice 1 o id do vertice
+                vertice2 = i->getTargetId();//vertice 2 o target do vertice
+            }
+            if(i->getWeight() < menor)//e assim verifica se o peso da aresta é menor que menor
+            {//se for
+                menor = i->getWeight();//menor recebe o peso
+                vertice1 = i->getId();//pega o id do vertice inicial
+                vertice2 = i->getTargetId();//e o id do vertice final
+            }
+
+        }   //feita a verificaçao de todas as arestas
+        //inclui o id e o target id dos vertices
+        solucao.push_back(vertice1);//adiciona o vertice a soluçao 
+        solucao.push_back(vertice2); // e o vertice 2 tbm 
+        valorTotalPeso = menor;//o valor total e o valor total mais o menor (no caso ele começaria com 0)
+        valorTotalPeso += greed(getNode(vertice2),solucao,valorTotalPeso); // e o peso total recebe o peso conforme vai voltando na pilha de recursao
+        return valorTotalPeso; // retorna o peso total    
+    }
+    else
+    {
+        return;
+    }
+}
+
+float Graph::greedRandom()
+{
+    float pesoTotalArestas;//cria um valor que vai ser devolvido, um valor total do peso das arestas
+    list<int> vetorSolucao = {}; //vetor solução com id e target id
+    float menor = greed(nosGrafo[rand()],vetorSolucao,pesoTotalArestas);//variavel auxiliar para ser atualizada
+    for(int i=0; i < 4;i++)//tirar uma media de 4 a 5 loops
+    {
+        float f = greed(nosGrafo[rand()],vetorSolucao,pesoTotalArestas);//recebe o primeiro valor
+        if(menor > f )//e analisa se é menor que a variavel menor
+        {
+            menor = f;//se for menor vai receber f
+        }
+    }
+    pesoTotalArestas = menor;//depois de conferir com raizes randomicas pega a melhor soluçao
+    return pesoTotalArestas;//e retorna o menor peso
+}
