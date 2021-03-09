@@ -2,14 +2,37 @@
     "cSpell.language": ",pt,pt_BR",
     "cSpell.words": [
         "Edge's",
+        "Explica",
+        "Explicaçao",
         "Graph's",
         "Kuskal",
+        "Node's",
         "Prim",
+        "Solucao",
         "algoritmo",
+        "aloca",
+        "alocaçao",
+        "ao",
         "dijkstra",
+        "entao",
+        "fun",
+        "funçao",
+        "kruscal",
         "kruskal",
+        "padrao",
+        "pichau",
         "proxima",
+        "remo",
+        "remoçao",
+        "saida",
+        "variavel",
+        "verifica",
+        "verificaçao",
         "vertice",
-        "vertices"
-    ]
+        "vertices",
+        "voce"
+    ],
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
 }

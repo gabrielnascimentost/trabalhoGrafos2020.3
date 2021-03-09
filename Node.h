@@ -21,7 +21,9 @@ class Node{ //classe vertice
         unsigned int out_degree;// int sem sinal (nao sei oq) ** e o valor de saida 
         float weight;// peso dos vertices
         Node* next_node;// proximo vertice
-        
+        bool visited = false;
+        int dist;
+
 
     public: // declaraçoes publicas
         vector<int> ListaAdj; //cria lista de adjacente pelo id do vertice
@@ -30,13 +32,8 @@ class Node{ //classe vertice
         // Destructor
         ~Node(); // destrutor
         // Getters (declaraçao dos gets)
-<<<<<<< HEAD
-        Edge* getFirstEdge();//retorna o primeiro aresta
-        Edge* getLastEdge();//retorna o ultimo aresta
-=======
         Edge* getFirstEdge();//retorna a primeira aresta
         Edge* getLastEdge();//retorna a ultima aresta
->>>>>>> 3d54b69d9f7839e734b067dd8ad919bbac204e7a
         int getId();//retorna o identificador
         int getInDegree();//retorna o valor de entrada do vertice *talvez seja
         int getOutDegree();//retorna o valor de saida do vertice *talvez seja
@@ -45,6 +42,9 @@ class Node{ //classe vertice
         // Setters (declaraçao do sets)
         void setNextNode(Node* node);//insere o proximo vertice
         void setWeight(float weight);//insere o peso no vertice
+        void setFirstEdge(Edge *firstEdge);
+        void setLastEdge(Edge *lastEdge);
+
         // Other methods
         bool searchEdge(int target_id);//existe esse vertice no grafo? passando o id do vertice alvo
         void insertEdge(int id, int target_id, float weight);//insere novo vertice passando como parametro id e peso (se houver), se nao houver passa 0
@@ -55,8 +55,18 @@ class Node{ //classe vertice
         void incrementInDegree();//incrementa grau de entrada
         void decrementInDegree();//decrementa grau de entrada
         Edge* hasEdgeBetween(int target_id);//tem aresta entre o vertice que foi chamado e o passado por parametro?
-        // Auxiliar methods (metodos auxiliares)
-        
+        vector<Node *> adjNodes;
+
+    bool isVisited() const;
+        void setVisited(bool visited);
+        const vector<Node *> &getAdjNodes() const;
+        void setAdjNodes(const vector<Node *> &adjNodes);
+
+    int getDist() const;
+
+    void setDist(int dist);
+    //ainda nao sei o que faz exatamente
+
 
 };
 

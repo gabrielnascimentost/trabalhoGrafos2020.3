@@ -10,23 +10,28 @@
 using namespace std;
 
 Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore geradora minima usando algoritmo de kruskal
-    if (grafo->ehConexo()) {//verifica se o grafo eh conexo
+    if (grafo->ehConexo()) 
+    {//verifica se o grafo eh conexo
         Graph* AGM = new Graph(); //criou um grafo solução
         list<Edge*> arestas = grafo->criaListaArestas(); // cria uma cópia das arestas do grafo
     
         // ordena a lista de arestas por peso em ordem crescente
-        arestas.sort([](Edge* aresta1, Edge* aresta2) { // ordena as arestas
+        arestas.sort([](Edge* aresta1, Edge* aresta2) 
+        { // ordena as arestas
             return aresta1->getWeight() < aresta2->getWeight();//returna as arestas ordenadas por peso
         });
 
-        for (auto i = arestas.begin(); AGM->getNumberEdges() < grafo->getOrder() - 1; i++) {//para i= inicio da lista, ate o final da lista < vertices -1 do grafo
+        for (auto i = arestas.begin(); AGM->getNumberEdges() < grafo->getOrder() - 1; i++) 
+        {//para i= inicio da lista, ate o final da lista < vertices -1 do grafo
             Edge* aresta = *i; //aresta vai ser igual a aresta do "for"
 
-            if (!AGM->searchNode(aresta->getId())) {// se o grafo nao possui o vertice identificado
+            if (!AGM->searchNode(aresta->getId())) 
+            {// se o grafo nao possui o vertice identificado
                 AGM->insertNode(aresta->getId()); //cria esse vertice novo na agm*/
             }
 
-            if (!AGM->searchNode(aresta->getTargetId())) {//se nao possui o segundo vertice (ou vertice alvo)
+            if (!AGM->searchNode(aresta->getTargetId())) 
+            {//se nao possui o segundo vertice (ou vertice alvo)
                 AGM->insertNode(aresta->getTargetId());//cria esse vertice na agm
             }
 
@@ -40,8 +45,11 @@ Graph* AlgoritmoKruskal::findAGMKruskal(Graph *grafo) { // encontra a arvore ger
         }
 
         return AGM;
-    } else {
+    } 
+    else 
+    {
         cout << "O grafo eh desconexo." << endl;
+        return nullptr;
     }
 }
 
@@ -51,9 +59,19 @@ bool AlgoritmoKruskal::ehCiclo(Node* vertice1, Node* vertice2) {
     {
         for (auto j = vertice2->ListaAdj.begin(); j != vertice2->ListaAdj.end(); j++)//verifica todas as adjacências do vertice 2
         {
-            if((vertice1->getId() != *i && vertice2->getId() != *j) && (*i == *j) )//verifica se tem algum vertice que interliga 1 e 2 indiretamente
+            if((*i == *j) && (vertice1->getId() != *i && vertice2->getId() != *j))//verifica se tem algum vertice que interliga 1 e 2 indiretamente
                 return true;//se tem retorna verdadeiro (que há ciclo)
         }
     }
     return false;//se nao tem retorna falso
+}
+
+void AlgoritmoKruskal::imprimeSolucao(Graph *grafo)
+{
+    cout << "Arvore Geradora Minima - Kruskal:" << endl;
+    for (auto edge : grafo->arestasGrafo){
+        cout << "(" << edge->getId() << ", " << edge->getTargetId() << ") ";
+    }
+    cout << endl;
+    system("pause");
 }

@@ -19,8 +19,10 @@ class Edge{
 
     public:
         // Constructor
+        Edge(int target_id);
         Edge(int id, int target_id);
-        // Destructor
+        Edge();
+    // Destructor
         ~Edge();
         // Getters
         int getId();
@@ -29,7 +31,9 @@ class Edge{
         float getWeight();
         // Setters
         void setNextEdge(Edge* edge);
-        void setWeight(float weight); 
+        void setWeight(float weight);
+        void setId(int id);
+        void setTargetId(int targetId);
 
 }; 
 

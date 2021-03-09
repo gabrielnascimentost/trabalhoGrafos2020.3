@@ -19,7 +19,7 @@ Node::Node(int id){ // construtor passando o identificador como parametro
     this->first_edge = nullptr;//declara a primeira aresta como null
     this->last_edge = nullptr;//declara a ultima aresta como null
     this->next_node = nullptr;//poe o proximo vertice como null
-    
+
 
 };//fim do construtor
 
@@ -104,18 +104,26 @@ void Node::insertEdge(int id, int target_id, float weight){ //insere aresta pass
         // Allocating the new edge and keeping the integrity of the edge list (aloca uma nova aresta e mantem a integridade da lista de arestas anteriores)
         Edge* edge = new Edge(id, target_id);//declara uma nova aresta
         edge->setWeight(weight);//coloca um peso, se nao tiver o padrao é 0
-        this->last_edge->setNextEdge(edge);// a ultima aresta do vertice é declarada como proxima 
+        this->last_edge->setNextEdge(edge);// a ultima aresta do vertice é declarada como proxima
         this->last_edge = edge;// e a aresta é setada como a ultima (ou seja, a que foi implementada agora passa a ser a ultima e a antiga passa a ser a proxima)
-        this->ListaAdj.push_back(last_edge->getId());
+        this->ListaAdj.push_back(target_id);
     }
     else{ // se for a primeira aresta do vertice
          // Allocating the new edge and keeping the integrity of the edge list (alocaçao mantendo a integridade das arestas)
         this->first_edge = new Edge(id, target_id);//primeira aresta passa a receber uma nova aresta
         this->first_edge->setWeight(weight);//seta o peso da aresta (se houver)
         this->last_edge = this->first_edge;//ultima aresta e definida como a primeira
-        this->ListaAdj.push_back(this->last_edge->getId());
+        this->ListaAdj.push_back(target_id);
     }//fim da alocaçao de arestas
 
+}
+
+int Node::getDist() const {
+    return dist;
+}
+
+void Node::setDist(int dist) {
+    Node::dist = dist;
 }
 
 void Node::removeAllEdges(){ // remove todas as arestas
@@ -136,7 +144,7 @@ void Node::removeAllEdges(){ // remove todas as arestas
             this->ListaAdj.erase(i);
         }
     }//sai do if
-   
+
     this->first_edge = this->last_edge = nullptr; //se nao tem aresta, entao a primeira e a ultima sao colocadas como null
 
 }//fim do removedor de todas as arestas
@@ -241,4 +249,28 @@ Edge* Node::hasEdgeBetween(int target_id)//verifica se existe aresta entre passa
     }//se sair é por que nao tem a aresta
     return nullptr;//portanto passe null caso nao encontre
 }//fim da busca pela aresta
+
+bool Node::isVisited() const {
+    return visited;
+}
+
+void Node::setVisited(bool visited) {
+    Node::visited = visited;
+}
+
+const vector<Node *> &Node::getAdjNodes() const {
+    return adjNodes;
+}
+
+void Node::setAdjNodes(const vector<Node *> &adjNodes) {
+    Node::adjNodes = adjNodes;
+}
+
+void Node::setFirstEdge(Edge *firstEdge) {
+    first_edge = firstEdge;
+}
+
+void Node::setLastEdge(Edge *lastEdge) {
+    last_edge = lastEdge;
+}
 

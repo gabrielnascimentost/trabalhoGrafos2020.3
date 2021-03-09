@@ -25,7 +25,7 @@ class Graph{
         Node* last_node; // ultimo vertice (nó)
         vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
 
-    public:
+public:
         //Constructor
         Graph(int order, bool directed, bool weighted_edge, bool weighted_node); // construtor de grafos com parametros
         Graph(); // construtor para ser usado em grafos auxiliares
@@ -45,25 +45,34 @@ class Graph{
         void removeNode(int id);// remove vertice
         bool searchNode(int id); //verifica se o vertice existe no grafo
         Node* getNode(int id); // retorna um ponteiro pro vertice
+        Edge* getEdge(int id, int idTarget);
 
         //methods phase1
         void topologicalSorting(); // ordenacao topologica de um DAG
-        void breadthFirstSearch(ofstream& output_file); //busca em largura
+        void breadthFirstSearch(int id); //busca em largura a partir de um no
+        void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
-        Graph* agmKuskal(); // metodo arvore geradora minima de kruskal
         Graph* agmPrim(); // arvore geradora minima de prim
+        Edge* getMimWeightEdge(Graph *g, Graph *agmPrim);
         float floydMarshall(int idSource, int idTarget); // metodo floyd
         float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
+        void setArestasGrafo(const vector<Edge *> &arestasGrafo);
+        bool ehConexo();
+        vector<Node*> verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
+        list<Edge*> criaListaArestas();
+        vector<Edge*> arestasGrafo;
+        const vector<Edge *> &getArestasGrafo() const;
 
         //methods phase1
         float greed(); // algoritmo guloso
         float greedRandom(); // guloso randomizado
-        float greedRactiveRandom(); // guloso randomizado reativo
-        //Metodos Auxiliares
-        bool ehConexo();
-        void verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
-        list<Edge*> criaListaArestas();
-    private:
+        float greedRactiveRandom();
+
+    const vector<Node *> &getNosGrafo() const;
+
+    void setNosGrafo(const vector<Node *> &nosGrafo);
+    // guloso randomizado reativo
+
 };
 
 #endif // GRAPH_H_INCLUDED

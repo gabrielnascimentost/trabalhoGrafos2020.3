@@ -17,6 +17,8 @@ Edge::Edge(int id,int target_id){  // construtor da aresta passando como paramet
 
 }
 
+Edge::Edge() {}
+
 // Destructor
 Edge::~Edge(){ // destrutor
 
@@ -61,5 +63,13 @@ void Edge::setWeight(float weight){//set do peso da aresta
 
     this->weight = weight;//define o peso da aresta como o peso passado por parametro
 
+}
+
+void Edge::setId(int id) {
+    Edge::id = id;
+}
+
+void Edge::setTargetId(int targetId) {
+    target_id = targetId;
 }
 

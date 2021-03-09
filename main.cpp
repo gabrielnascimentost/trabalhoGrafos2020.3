@@ -9,6 +9,8 @@
 #include <chrono>
 #include "Graph.h"
 #include "Node.h"
+#include "AlgoritmoKruskal.h"
+#include "AlgoritmoDijkstra.h"
 
 using namespace std;
 
@@ -31,7 +33,12 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     if(!graph->getWeightedEdge() && !graph->getWeightedNode()){ //se o grafo nao tiver peso nas arestas nem nos vertices
 
         while(input_file >> idNodeSource >> idNodeTarget) {//enquanto (nao sei oq)
-
+            if(!graph->searchNode(idNodeSource)){
+                graph->insertNode(idNodeSource);
+            }
+            if(!graph->searchNode(idNodeTarget)){
+                graph->insertNode(idNodeTarget);
+            }
             graph->insertEdge(idNodeSource, idNodeTarget, 0);//insira uma nova aresta do vertice inicial para o vertice alvo
 
         }
@@ -41,8 +48,13 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
         float edgeWeight;//cria uma variavel com o peso das arestas
 
         while(input_file >> idNodeSource >> idNodeTarget >> edgeWeight) { //enquanto nao sei o q
-
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);//insira uma nova aresta no grafo, passsando o vertice de partida, vertice alvo, e o peso da aresta.
+            if(!graph->searchNode(idNodeSource)){
+                graph->insertNode(idNodeSource);
+            }
+            if(!graph->searchNode(idNodeTarget)){
+                graph->insertNode(idNodeTarget);
+            }
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);//insira uma nova aresta no grafo, passando o vertice de partida, vertice alvo, e o peso da aresta.
 
         }
 
@@ -51,11 +63,15 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
         float nodeSourceWeight, nodeTargetWeight;//declara o peso dos 2 vertices
 
         while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) { // deve ser o metodo de escrita, ainda nao sei
-
+            if(!graph->searchNode(idNodeSource)){
+                graph->insertNode(idNodeSource);
+                graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);//retorna o no de partida e insere o peso
+            }
+            if(!graph->searchNode(idNodeTarget)){
+                graph->insertNode(idNodeTarget);
+                graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o no alvo e insere o peso
+            }
             graph->insertEdge(idNodeSource, idNodeTarget, 0);// insere nova aresta com peso 0 na aresta
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);//retorna o no de partida e insere o peso
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o no alvo e insere o peso
-
         }
 
     }else if(graph->getWeightedNode() && graph->getWeightedEdge()){// se o grafo tiver peso nos vertices e nas arestas
@@ -63,11 +79,15 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
         float nodeSourceWeight, nodeTargetWeight, edgeWeight;//declara as variaveis dos pesos
 
         while(input_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight) { //ainda nao entendi
-
+            if(!graph->searchNode(idNodeSource)){
+                graph->insertNode(idNodeSource);
+                graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);//retorna o no de partida e insere o peso
+            }
+            if(!graph->searchNode(idNodeTarget)){
+                graph->insertNode(idNodeTarget);
+                graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o no alvo e insere o peso
+            }
             graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);// insere nova aresta com no de partida, no alvo e peso como parametros
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);// retorna o vertice de partida e insere o peso
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);// retorna o vertice alvo (da aresta) e insere o peso
-
         }
 
     }
@@ -75,35 +95,40 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     return graph;//retorna o grafo
 }
 
-Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
-
-    //Variáveis para auxiliar na criação dos nós no Grafo
-    int idNodeSource;
-    int idNodeTarget;
-    int order;
-    int numEdges;
-
-    //Pegando a ordem do grafo
-    input_file >> order >> numEdges;
-
-    //Criando objeto grafo
-    Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
-
-    //Leitura de arquivo
-    while(input_file >> idNodeSource >> idNodeTarget) {
-
-        graph->insertEdge(idNodeSource, idNodeTarget, 0);
-
-    }
-
-    return graph;
-}
+//Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
+//
+//    //Variáveis para auxiliar na criação dos nós no Grafo
+//    int idNodeSource;
+//    int idNodeTarget;
+//    int order;
+//    int numEdges;
+//
+//    //Pegando a ordem do grafo
+//    input_file >> order;
+//
+//    //Criando objeto grafo
+//    Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
+//
+//    //Leitura de arquivo
+//    while(input_file >> idNodeSource >> idNodeTarget) {
+//            if(!graph->searchNode(idNodeSource)){
+//                graph->insertNode(idNodeSource);
+//            }
+//            if(!graph->searchNode(idNodeTarget)){
+//                graph->insertNode(idNodeTarget);
+//            }
+//            graph->insertEdge(idNodeSource, idNodeTarget, 0);
+//
+//    }
+//
+//    return graph;
+//}
 
 int menu(){
 
     int selecao;
 
-    cout << "MENU" << endl;
+    cout << "----" << endl;
     cout << "----" << endl;
     cout << "[1] Subgrafo induzido por conjunto de vértices" << endl;
     cout << "[2] Caminho Mínimo entre dois vértices - Dijkstra" << endl;
@@ -116,7 +141,8 @@ int menu(){
     cout << "[9] Algoritmo Guloso Randomizado " << endl;
     cout << "[10] Algoritmo Guloso Randomizado Reativo" << endl;
     cout << "[0] Sair" << endl;
-
+    cout << "----" << endl;
+    cout << "Opção escolhida: " << endl;
     cin >> selecao;
 
     return selecao;
@@ -134,7 +160,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Caminho mínimo entre dois vértices usando Dijkstra (2)
         case 2:{
-
+            int id1, id2;
+            cout << "Digite os IDs dos vertices:" << endl;
+            cin >> id1 >> id2;
+            AlgoritmoDijkstra::doDijkstra(graph, id1,id2);
             break;
         }
 
@@ -147,20 +176,33 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             //AGM Prim; (4)
         case 4:{
 
-
-
             break;
         }
 
            //AGM - Kruscal; (5)
         case 5:{
-
+            Graph *newAGM;
+            newAGM = AlgoritmoKruskal::findAGMKruskal(graph);
+            string optionUser;
+            cout << "Deseja imprimir a solucao (S ou N)? ";
+            cin >> optionUser;
+            if(optionUser == "S"){
+                AlgoritmoKruskal::imprimeSolucao(newAGM);
+            }
             break;
         }
 
             //Busca em largura; (6)
         case 6:{
-
+            int idNodeSearch;
+            cout << "Para realizar a busca em largura, informe o id do No: ";
+            cin >> idNodeSearch;
+            if(graph->searchNode(idNodeSearch)){
+                cout << "Realizando busca em largura..." << endl;
+                graph->breadthFirstSearch(idNodeSearch);
+                return;
+            }
+            cout << "No nao encontrado no grafo" << endl;
             break;
         }
             //Ordenação Topologica; (7)
@@ -182,6 +224,10 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             //Algoritmo Guloso Randomizado Reativo (10)
         case 10:{
 
+            break;
+        }
+        case 0:{
+            cout << "Bye bye!" << endl;
             break;
         }
         default:
@@ -214,31 +260,71 @@ int mainMenu(ofstream& output_file, Graph* graph){
 }
 
 
+//
+//int main(int argc, char const *argv[]) {
+//
+//    //Verificação se todos os parâmetros do programa foram entrados
+//    if (argc != 6) {
+//
+//        cout << "ERROR: Expecting: ./<program_name> <input_file> <output_file> <directed> <weighted_edge> <weighted_node> " << endl;
+//        return 1;
+//
+//    }
+//
+//    string program_name(argv[0]);
+//    string input_file_name(argv[1]);
+//
+//    string instance;
+//    if(input_file_name.find("v") <= input_file_name.size()){
+//        string instance = input_file_name.substr(input_file_name.find("v"));
+//        cout << "Running " << program_name << " with instance " << instance << " ... " << endl;
+//    }
+//
+//    //Abrindo arquivo de entrada
+//    ifstream input_file;
+//    ofstream output_file;
+//    input_file.open(argv[1], ios::in);
+//    output_file.open(argv[2], ios::out | ios::trunc);
+//
+//
+//
+//    Graph* graph;
+//
+//    if(input_file.is_open()){
+//
+//        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+//
+//    }else
+//        cout << "Unable to open " << argv[1];
+//
+//
+//    mainMenu(output_file, graph);
+//
+//
+//
+//    //Fechando arquivo de entrada
+//    input_file.close();
+//
+//    //Fechando arquivo de saída
+//    output_file.close();
+//
+//    return 0;
+//}
 
-int main(int argc, char const *argv[]) {
-
-    //Verificação se todos os parâmetros do programa foram entrados
-    if (argc != 6) {
-
-        cout << "ERROR: Expecting: ./<program_name> <input_file> <output_file> <directed> <weighted_edge> <weighted_node> " << endl;
-        return 1;
-
-    }
-
-    string program_name(argv[0]);
-    string input_file_name(argv[1]);
-
+int main(){
+    string input_file_name("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt");
     string instance;
+
     if(input_file_name.find("v") <= input_file_name.size()){
         string instance = input_file_name.substr(input_file_name.find("v"));
-        cout << "Running " << program_name << " with instance " << instance << " ... " << endl;
+        cout << "Running with instance " << instance << " ... " << endl;
     }
 
     //Abrindo arquivo de entrada
     ifstream input_file;
     ofstream output_file;
-    input_file.open(argv[1], ios::in);
-    output_file.open(argv[2], ios::out | ios::trunc);
+    input_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt", ios::in);
+    output_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\saida.txt", ios::out | ios::trunc);
 
 
 
@@ -246,10 +332,10 @@ int main(int argc, char const *argv[]) {
 
     if(input_file.is_open()){
 
-        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+        graph = leitura(input_file, 0, 0, 0);
 
     }else
-        cout << "Unable to open " << argv[1];
+        cout << "Unable to open " << "testeConexo.txt";
 
 
     mainMenu(output_file, graph);
@@ -263,5 +349,6 @@ int main(int argc, char const *argv[]) {
     output_file.close();
 
     return 0;
-}
 
+
+}
