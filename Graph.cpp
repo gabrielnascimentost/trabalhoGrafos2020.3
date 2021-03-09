@@ -340,7 +340,7 @@ float Graph::greedRandom()
         float f = greed(nosGrafo[rand()],vetorSolucao,pesoTotalArestas);//recebe o primeiro valor
         if(menor > f )//e analisa se é menor que a variavel menor
         {
-            menor = f;//se for menor vai receber f
+            menor = f;//se for menor vai receber f 
         }
     }
     pesoTotalArestas = menor;//depois de conferir com raizes randomicas pega a melhor soluçao
