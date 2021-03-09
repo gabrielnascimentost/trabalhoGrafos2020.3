@@ -17,8 +17,10 @@
         "entao",
         "fun",
         "funçao",
+        "kruscal",
         "kruskal",
         "padrao",
+        "pichau",
         "proxima",
         "remo",
         "remoçao",
@@ -29,8 +31,7 @@
         "vertice",
         "vertices",
         "voce"
-    ]
-    "cSpell.language": ",pt,pt_BR",
+    ],
     "files.associations": {
         "iosfwd": "cpp"
     }

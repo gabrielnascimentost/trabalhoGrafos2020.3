@@ -54,7 +54,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
             if(!graph->searchNode(idNodeTarget)){
                 graph->insertNode(idNodeTarget);
             }
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);//insira uma nova aresta no grafo, passsando o vertice de partida, vertice alvo, e o peso da aresta.
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);//insira uma nova aresta no grafo, passando o vertice de partida, vertice alvo, e o peso da aresta.
 
         }
 

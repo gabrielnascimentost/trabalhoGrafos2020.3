@@ -182,7 +182,7 @@ void Graph::auxBreadthFirstSearch(vector<Node *> nosFila) {
 }
 
 
-float Graph::floydMarshall(int idSource, int idTarget){
+/*float Graph::floydMarshall(int idSource, int idTarget){
     
 }
 
@@ -206,7 +206,7 @@ Graph* Graph::getVertexInduced(int* listIdNodes){
 Graph* Graph::agmPrim(){
 
 }
-
+*/
 vector<Node*> Graph::verificaCaminho(Node* v,int indice, vector<Node*> visitados) //verifica se há caminho no grafo, passando o vertice inicial, o indice e o vetor que vai retornar
 {
     visitados[indice]=v;//insere o primeiro vertice no primeiro indice do vetor
@@ -270,9 +270,9 @@ list<Edge*> Graph::criaListaArestas()//cria um vetor com as arestas do grafo
     return Arestas;//retorna o vetor no final para ser usado
 }
 
-Edge * Graph::getMimWeightEdge(Graph *g, Graph *agmPrim) {
+/*Edge * Graph::getMimWeightEdge(Graph *g, Graph *agmPrim) {
 
-}
+}*/
 
 const vector<Node *> &Graph::getNosGrafo() const {
     return nosGrafo;

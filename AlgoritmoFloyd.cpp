@@ -13,7 +13,7 @@ AlgoritmoFloyd::~AlgoritmoFloyd() {
 
 }
 
-vector<vector<int>> * AlgoritmoFloyd::floydAux() {
+/*vector<vector<int>> * AlgoritmoFloyd::floydAux() {
 
 }
 
@@ -21,4 +21,4 @@ vector<vector<int>> * AlgoritmoFloyd::floydAux() {
 int AlgoritmoFloyd::floyd(string idOrigem, string idDestino) {
 
 
-}
+}*/
