@@ -1,7 +1,3 @@
-//
-// Created by Pichau on 08/03/2021.
-//
-
 #include <iostream>
 #include <limits.h>
 #include "AlgoritmoDijkstra.h"
@@ -28,7 +24,7 @@ void AlgoritmoDijkstra::doDijkstra(Graph *grafo, int idNode1, int idNode2) {
         nodes.at(nodeAux->getId()) = nullptr;
     }
 
-    int cost = grafo->getNode(idNode2)->getDist()3;
+    int cost = grafo->getNode(idNode2)->getDist();
 
     if (cost < INT_MAX) {
         cout << "O custo do caminho mínimo utilizando o algoritmo Dijstra é: " << grafo->getNode(idNode2)->getDist() << endl;
