@@ -23,7 +23,7 @@ class Graph{
         bool weighted_node; // peso nos vertices? s ou n
         Node* first_node; // primeiro vertice (nó)
         Node* last_node; // ultimo vertice (nó)
-        vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
+
 
 public:
         //Constructor
@@ -39,39 +39,37 @@ public:
         bool getWeightedNode(); // retorna se tem peso nos vertices
         Node* getFirstNode(); // retorna o primeiro vertice
         Node* getLastNode(); // retorna ultimo vertice
+        Node* getNode(int id); // retorna um ponteiro pro vertice
+        Edge* getEdge(int id, int idTarget);
+
         //Other methods
         void insertNode(int id); // insere vertice
         void insertEdge(int id, int target_id, float weight); //insere aresta
         void removeNode(int id);// remove vertice
         bool searchNode(int id); //verifica se o vertice existe no grafo
-        Node* getNode(int id); // retorna um ponteiro pro vertice
-        Edge* getEdge(int id, int idTarget);
+        void setArestasGrafo(const vector<Edge *> &arestasGrafo);
+        bool ehConexo();
+        vector<Node*> verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
+        list<Edge*> criaListaArestas();
+        vector<Edge*> arestasGrafo;
+        vector<Node*> nosGrafo; //nos do grafo ordenados em um vetor
+        const vector<Edge *> &getArestasGrafo() const;
+
 
         //methods phase1
         void topologicalSorting(); // ordenacao topologica de um DAG
         void breadthFirstSearch(int id); //busca em largura a partir de um no
         void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
-        Graph* agmPrim(); // arvore geradora minima de prim
-        Edge* getMimWeightEdge(Graph *g, Graph *agmPrim);
-        float floydMarshall(int idSource, int idTarget); // metodo floyd
-        float dijkstra(int idSource, int idTarget); // metodo de busca dijkstra
-        void setArestasGrafo(const vector<Edge *> &arestasGrafo);
-        bool ehConexo();
-        vector<Node*> verificaCaminho(Node* vertice,int indice,vector<Node*> visitados );
-        list<Edge*> criaListaArestas();
-        vector<Edge*> arestasGrafo;
-        const vector<Edge *> &getArestasGrafo() const;
 
         //methods phase2
         float greed(Node* verticeQualquer, list<int> solucao,float valorTotal); // algoritmo guloso
         float greedRandom(); // guloso randomizado
-        float greedRactiveRandom();
+        float greedRactiveRandom(); // guloso randomizado reativo
 
-    const vector<Node *> &getNosGrafo() const;
+        const vector<Node *> &getNosGrafo() const;
+        void setNosGrafo(const vector<Node *> &nosGrafo);
 
-    void setNosGrafo(const vector<Node *> &nosGrafo);
-    // guloso randomizado reativo
 
 };
 
