@@ -1,16 +1,11 @@
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <math.h>
-#include <utility>
-#include <tuple>
-#include <iomanip>
 #include <stdlib.h>
-#include <chrono>
 #include "Graph.h"
-#include "Node.h"
 #include "AlgoritmoKruskal.h"
 #include "AlgoritmoDijkstra.h"
+#include "AlgoritmoPrim.h"
+#include "AlgoritmoFloyd.h"
 
 using namespace std;
 
@@ -175,7 +170,14 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
             //AGM Prim; (4)
         case 4:{
-
+            Graph *newAGM;
+            newAGM = AlgoritmoPrim::findAGMPrim(graph);
+            string optionUser;
+            cout << "Deseja imprimir a solucao (S ou N)? ";
+            cin >> optionUser;
+            if(optionUser == "S"){
+                AlgoritmoPrim::printSolution(newAGM);
+            }
             break;
         }
 
@@ -223,7 +225,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Algoritmo Guloso Randomizado Reativo (10)
         case 10:{
-
+            cout << " Funcionalidade nao disponivel neste trabalho." << endl;
             break;
         }
         case 0:{

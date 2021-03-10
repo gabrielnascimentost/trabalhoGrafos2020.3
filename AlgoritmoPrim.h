@@ -11,8 +11,8 @@
 
 class AlgoritmoPrim {
 public:
-    static void findAGMPrim(Graph *graph);
-    static Edge *minimalEdge(Graph *graph, Graph *minimalAgmPrim);
+    static Graph* findAGMPrim(Graph *graph);
+    static Edge* minimalEdge(Graph *graph, Graph *minimalAgmPrim);
     static void printSolution(Graph *graph);
 };
 

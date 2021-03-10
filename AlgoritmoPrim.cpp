@@ -5,7 +5,7 @@
 #include <iostream>
 #include "AlgoritmoPrim.h"
 
-void AlgoritmoPrim::findAGMPrim(Graph *graph) {
+Graph* AlgoritmoPrim::findAGMPrim(Graph *graph) {
     if (graph->ehConexo()) {
         auto *agmPrim = new Graph();
 
@@ -29,7 +29,7 @@ void AlgoritmoPrim::findAGMPrim(Graph *graph) {
             agmPrim->arestasGrafo.push_back(edge);
         }
 
-        printSolution(agmPrim);
+        return agmPrim;
     } else {
         cout << "O grafo eh desconexo." << endl;
     }
