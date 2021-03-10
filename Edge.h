@@ -21,7 +21,12 @@ class Edge{
         // Constructor
         Edge(int target_id);
         Edge(int id, int target_id);
-        Edge();
+
+    Edge(int id, int targetId, float weight);
+
+    Edge(int id, int targetId, Edge *nextEdge, float weight);
+
+    Edge();
     // Destructor
         ~Edge();
         // Getters

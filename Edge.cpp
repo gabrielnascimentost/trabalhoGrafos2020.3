@@ -73,3 +73,8 @@ void Edge::setTargetId(int targetId) {
     target_id = targetId;
 }
 
+Edge::Edge(int id, int targetId, Edge *nextEdge, float weight) : id(id), target_id(targetId), next_edge(nextEdge),
+                                                                 weight(weight) {}
+
+Edge::Edge(int id, int targetId, float weight) : id(id), target_id(targetId), weight(weight) {}
+

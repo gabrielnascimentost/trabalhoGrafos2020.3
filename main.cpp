@@ -150,7 +150,23 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
         //Subgrafo induzido por um conjunto de vértices X (1)
         case 1:{
+            cout<<"Digite o numero de vertices: "<<endl;
+            int num;
+            cin>>num;
+            int * vet = new int[num];
+            for(int i=0; i<num; i++)
+            {
+                cout<<"Digite o vertice["<<i<<"]=";
+                cin>>vet[i];
+            }
+            Graph * b = graph->getVertexInduced(vet,num);
+            if(b != NULL)
+            {
+                b->printGraph();
+                delete b;
+            }
 
+            delete []vet;
             break;
         }
             //Caminho mínimo entre dois vértices usando Dijkstra (2)
@@ -178,6 +194,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             if(optionUser == "S"){
                 AlgoritmoPrim::printSolution(newAGM);
             }
+            delete newAGM;
             break;
         }
 
@@ -191,6 +208,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             if(optionUser == "S"){
                 AlgoritmoKruskal::imprimeSolucao(newAGM);
             }
+            delete newAGM;
             break;
         }
 
@@ -214,7 +232,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Algoritmo Guloso (8)
         case 8: {
-            
+            cout << "Em construcao! Favor olhar o graph.cpp"
             break;
         }
             //Algoritmo Guloso Randomizado (9)

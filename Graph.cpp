@@ -389,3 +389,86 @@ string Graph::topologicalSorting() {
     }
     return stringAux.str();
 }
+
+
+Graph * Graph::getVertexInduced(int *listIdNodes, int tam) {
+    int *nodeVerify = new int[order];
+    int *nodes = new int[order];
+    int ind = 0;
+
+    Graph* aux = new Graph();
+    Node *node = nosGrafo.front();
+
+    for(int i=0; i < order; ++i){
+        nodeVerify[i] = 0;
+        nodes[i] = node->getId();
+        node = node->getNextNode();
+    }
+
+    for(int i = 0; i < tam; ++i)
+    {
+        if(!nosGrafo.at(listIdNodes[i])){
+            cout<<"Node nao encontrado no grafo."<<endl;
+            delete nodeVerify;
+            delete nodes;
+            return NULL;
+        }
+
+        if(!aux->searchNode(listIdNodes[i])){
+            aux->insertNode(listIdNodes[i]);
+        }
+
+        for(int k = 0; k<tam ; k++){
+            if(listIdNodes[i]==order)
+                ind = k;
+        }
+
+        if(nodeVerify[ind] == 0){
+            nodeVerify[ind] = 1;
+        }else{
+            cout<<"Nodes repetidos na lista."<<endl;
+            delete nodeVerify;
+            delete nodes;
+            return NULL;
+        }
+
+        Node * v = getNode(listIdNodes[i]);
+        vector<Edge*> auxEdges = arestasGrafo;
+        for(int j=0; j<tam; j++)
+        {
+            if(listIdNodes[i]!=listIdNodes[j])
+            {
+                if(auxEdges.at(listIdNodes[j]))
+                {
+                    if(!aux->searchNode(listIdNodes[i]) && !aux->searchNode(listIdNodes[j]))
+                    {
+                        Edge * auxEdge = auxEdges.front();
+                        while(auxEdge!=NULL)
+                        {
+                            if(auxEdge->getNextEdge()->getId() == listIdNodes[j])
+                            {
+                                Edge *auxEdgeK = new Edge(listIdNodes[i],listIdNodes[j],auxEdge->getWeight());
+                                auxEdges.push_back(auxEdgeK);
+                            }
+                            auxEdge = auxEdge->getNextEdge();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    delete nodeVerify;
+    delete nodes;
+    return aux;
+}
+
+
+
+void Graph::printGraph() {
+    cout << "Impressao Graph :" << endl;
+    for (auto edge : arestasGrafo) {
+        cout << "(" << edge->getId() << "," << edge->getTargetId() << ") ";
+    }
+    cout << endl;
+}

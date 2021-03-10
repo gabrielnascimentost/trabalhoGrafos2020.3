@@ -62,7 +62,7 @@ public:
         string topologicalSorting(); // ordenacao topologica de um DAG
         void breadthFirstSearch(int id); //busca em largura a partir de um no
         void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
-        Graph* getVertexInduced(int* listIdNodes); // subvertice induzido
+        Graph* getVertexInduced(int* listIdNodes, int tam); // subvertice induzido
 
         //methods phase2
         float greed(Node* verticeQualquer, list<int> solucao,float valorTotal); // algoritmo guloso
@@ -71,6 +71,7 @@ public:
 
         const vector<Node *> &getNosGrafo() const;
         void setNosGrafo(const vector<Node *> &nosGrafo);
+        void printGraph()
 
 
 };
