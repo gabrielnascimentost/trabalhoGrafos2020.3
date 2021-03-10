@@ -232,7 +232,9 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Algoritmo Guloso (8)
         case 8: {
-            cout << "Em construcao! Favor olhar o graph.cpp"
+            list<int> solucaoGuloso;
+            float peso = graph->greed(graph->nosGrafo.front(),solucaoGuloso);
+            cout << "Solucao Gulosa: " << peso;
             break;
         }
             //Algoritmo Guloso Randomizado (9)

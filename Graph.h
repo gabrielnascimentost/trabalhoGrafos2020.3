@@ -65,7 +65,7 @@ public:
         Graph* getVertexInduced(int* listIdNodes, int tam); // subvertice induzido
 
         //methods phase2
-        float greed(Node* verticeQualquer, list<int> solucao,float valorTotal); // algoritmo guloso
+        float greed(Node* verticeQualquer, list<int> solucao); // algoritmo guloso
         float greedRandom(); // guloso randomizado
         float greedRactiveRandom(); // guloso randomizado reativo
 

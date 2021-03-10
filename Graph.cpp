@@ -293,8 +293,9 @@ Edge * Graph::getEdge(int id, int idTarget) {
     return nullptr;
 }
 
-float Graph::greed(Node* proximovertice, list<int> solucao, float valorTotalPeso)
-{   
+float Graph::greed(Node* proximovertice, list<int> solucao)
+{
+    float valorTotalPeso = 0;
     if(proximovertice!=nullptr)
     {   
         float menor = NULL;//atribui null pro menor
