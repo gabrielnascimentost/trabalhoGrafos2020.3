@@ -63,7 +63,7 @@ public:
         vector<Edge*> arestasGrafo;
         const vector<Edge *> &getArestasGrafo() const;
 
-        //methods phase1
+        //methods phase2
         float greed(Node* verticeQualquer, list<int> solucao,float valorTotal); // algoritmo guloso
         float greedRandom(); // guloso randomizado
         float greedRactiveRandom();
