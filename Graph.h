@@ -9,6 +9,7 @@
 #include <stack>
 #include <list>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ class Graph{
         bool weighted_node; // peso nos vertices? s ou n
         Node* first_node; // primeiro vertice (nó)
         Node* last_node; // ultimo vertice (nó)
+        stringstream stringAux;
 
 
 public:
@@ -57,7 +59,7 @@ public:
 
 
         //methods phase1
-        void topologicalSorting(); // ordenacao topologica de um DAG
+        string topologicalSorting(); // ordenacao topologica de um DAG
         void breadthFirstSearch(int id); //busca em largura a partir de um no
         void auxBreadthFirstSearch(vector<Node*> nosFila); //busca em largura a partir de um no
         Graph* getVertexInduced(int* listIdNodes); // subvertice induzido

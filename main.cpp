@@ -27,7 +27,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
 
     if(!graph->getWeightedEdge() && !graph->getWeightedNode()){ //se o grafo nao tiver peso nas arestas nem nos vertices
 
-        while(input_file >> idNodeSource >> idNodeTarget) {//enquanto (nao sei oq)
+        while(input_file >> idNodeSource >> idNodeTarget) {// le linha por linha
             if(!graph->searchNode(idNodeSource)){
                 graph->insertNode(idNodeSource);
             }
@@ -209,18 +209,17 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
         }
             //Ordenação Topologica; (7)
         case 7:{
-
-
+            graph->topologicalSorting();
             break;
         }
             //Algoritmo Guloso (8)
         case 8: {
-
+            
             break;
         }
             //Algoritmo Guloso Randomizado (9)
         case 9: {
-
+            graph->greedRandom();
             break;
         }
             //Algoritmo Guloso Randomizado Reativo (10)

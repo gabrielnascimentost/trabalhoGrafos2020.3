@@ -326,7 +326,7 @@ float Graph::greed(Node* proximovertice, list<int> solucao, float valorTotalPeso
     }
     else
     {
-        return;
+        return -1;
     }
 }
 
@@ -345,4 +345,47 @@ float Graph::greedRandom()
     }
     pesoTotalArestas = menor;//depois de conferir com raizes randomicas pega a melhor soluçao
     return pesoTotalArestas;//e retorna o menor peso
+}
+
+
+string Graph::topologicalSorting() {
+    stringAux.str(string());
+    int tam = this->order;
+    Node *auxNode = this->nosGrafo.at(0);
+    Node *auxLastNode;
+    Edge *auxEdge;
+    queue<Node*> queueZeroOrder;
+    queue<Node*> queueSolution;
+
+    while (auxNode != NULL ) {
+        if ( auxNode->getInDegree() == 0 ) {
+            queueZeroOrder.push(auxNode);
+        }
+        auxNode = auxNode->getNextNode();
+    }
+
+    while ( !queueZeroOrder.empty() ) {
+        auxLastNode = queueZeroOrder.front();
+        queueZeroOrder.pop();
+        queueSolution.push(auxLastNode);
+        auxEdge = auxLastNode->getFirstEdge();
+        while ( auxEdge != NULL ) {
+            auxNode = this->getNode(auxEdge->getTargetId());
+            auxNode->decrementInDegree();
+
+            if ( auxNode->getInDegree() <= 0 ) {
+                queueZeroOrder.push(auxNode);
+            }
+            auxEdge = auxEdge->getNextEdge();
+        }
+    }
+    if ( queueSolution.size() != tam ) {
+        stringAux << "existe um ciclo";
+    } else {
+        while ( !queueSolution.empty() ) {
+            stringAux << queueSolution.front()->getId() << " - ";
+            queueSolution.pop();
+        }
+    }
+    return stringAux.str();
 }
