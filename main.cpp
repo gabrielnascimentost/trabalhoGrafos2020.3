@@ -279,71 +279,30 @@ int mainMenu(ofstream& output_file, Graph* graph){
 }
 
 
-//
-//int main(int argc, char const *argv[]) {
-//
-//    //Verificação se todos os parâmetros do programa foram entrados
-//    if (argc != 6) {
-//
-//        cout << "ERROR: Expecting: ./<program_name> <input_file> <output_file> <directed> <weighted_edge> <weighted_node> " << endl;
-//        return 1;
-//
-//    }
-//
-//    string program_name(argv[0]);
-//    string input_file_name(argv[1]);
-//
-//    string instance;
-//    if(input_file_name.find("v") <= input_file_name.size()){
-//        string instance = input_file_name.substr(input_file_name.find("v"));
-//        cout << "Running " << program_name << " with instance " << instance << " ... " << endl;
-//    }
-//
-//    //Abrindo arquivo de entrada
-//    ifstream input_file;
-//    ofstream output_file;
-//    input_file.open(argv[1], ios::in);
-//    output_file.open(argv[2], ios::out | ios::trunc);
-//
-//
-//
-//    Graph* graph;
-//
-//    if(input_file.is_open()){
-//
-//        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
-//
-//    }else
-//        cout << "Unable to open " << argv[1];
-//
-//
-//    mainMenu(output_file, graph);
-//
-//
-//
-//    //Fechando arquivo de entrada
-//    input_file.close();
-//
-//    //Fechando arquivo de saída
-//    output_file.close();
-//
-//    return 0;
-//}
+int main(int argc, char const *argv[]) {
 
-int main(){
-    string input_file_name("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt");
+    //Verificação se todos os parâmetros do programa foram entrados
+    if (argc != 6) {
+
+        cout << "ERROR: Expecting: ./<program_name> <input_file> <output_file> <directed> <weighted_edge> <weighted_node> " << endl;
+        return 1;
+
+    }
+
+    string program_name(argv[0]);
+    string input_file_name(argv[1]);
+
     string instance;
-
     if(input_file_name.find("v") <= input_file_name.size()){
         string instance = input_file_name.substr(input_file_name.find("v"));
-        cout << "Running with instance " << instance << " ... " << endl;
+        cout << "Running " << program_name << " with instance " << instance << " ... " << endl;
     }
 
     //Abrindo arquivo de entrada
     ifstream input_file;
     ofstream output_file;
-    input_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt", ios::in);
-    output_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\saida.txt", ios::out | ios::trunc);
+    input_file.open(argv[1], ios::in);
+    output_file.open(argv[2], ios::out | ios::trunc);
 
 
 
@@ -351,10 +310,10 @@ int main(){
 
     if(input_file.is_open()){
 
-        graph = leitura(input_file, 0, 0, 0);
+        graph = leitura(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
 
     }else
-        cout << "Unable to open " << "testeConexo.txt";
+        cout << "Unable to open " << argv[1];
 
 
     mainMenu(output_file, graph);
@@ -368,6 +327,46 @@ int main(){
     output_file.close();
 
     return 0;
-
-
 }
+
+//int main(){
+//    string input_file_name("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt");
+//    string instance;
+//
+//    if(input_file_name.find("v") <= input_file_name.size()){
+//        string instance = input_file_name.substr(input_file_name.find("v"));
+//        cout << "Running with instance " << instance << " ... " << endl;
+//    }
+//
+//    //Abrindo arquivo de entrada
+//    ifstream input_file;
+//    ofstream output_file;
+//    input_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\testeConexo.txt", ios::in);
+//    output_file.open("C:\\Users\\Pichau\\CLionProjects\\trabalhoGrafos2020.3\\saida.txt", ios::out | ios::trunc);
+//
+//
+//
+//    Graph* graph;
+//
+//    if(input_file.is_open()){
+//
+//        graph = leitura(input_file, 0, 0, 0);
+//
+//    }else
+//        cout << "Unable to open " << "testeConexo.txt";
+//
+//
+//    mainMenu(output_file, graph);
+//
+//
+//
+//    //Fechando arquivo de entrada
+//    input_file.close();
+//
+//    //Fechando arquivo de saída
+//    output_file.close();
+//
+//    return 0;
+//
+//
+//}
